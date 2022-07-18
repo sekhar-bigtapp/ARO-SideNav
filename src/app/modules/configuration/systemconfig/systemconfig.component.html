@@ -1,0 +1,252 @@
+<!-- partial -->
+<div class="content-wrapper">
+  <div class=" container">
+    <div class=" pb-0">
+
+      <!-- first row starts here -->
+
+      <div class="row">
+        <div class="header-right mt-md-2 mt-lg-0 w-100">
+          <div class=" align-items-center d-inline-block">
+            <a href="#">
+              <p class="m-0 pe-3">Configuration</p>
+            </a>
+            <a class="ps-3 me-4" href="#">
+              <p class="m-0">System Configuration</p>
+            </a>
+          </div>
+          <!-- <div class="" style="display: inline-block;  float: right;">
+            <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text"
+              style="height:30px">
+              <i class="mdi mdi-arrow-left"></i> Back</button>
+          </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-12 p-0 grid-margin stretch-card mt-3">
+        <div class="card">
+          <div class="card-body pb-5">
+
+            <div class="mb-3">
+              <h3 class="d-inline-block"> System Configuration </h3>
+
+            </div>
+
+            <div class="clearfix"></div>
+
+
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Reorder Frequency </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"> Reorder Store Level </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"> ABC Filter </a>
+              </li>
+            </ul><!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="tabs-1" role="tabpanel">
+
+                <div class="left-tabs pt-5 pl-3 pb-5" role="tabpanel">
+                  <ul class="nav nav-tabs nav-tabs-left" role="tablist">
+                    <li role="presentation" class="nav-item">
+                      <a class="nav-link" href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"
+                        aria-selected="false">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1"
+                            value="option1" /> Daily </label>
+                      </a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                      <a class="nav-link" href="#tab-2" aria-controls="tab-2" role="tab" data-toggle="tab">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2"
+                            value="option2" /> Weekly </label>
+                      </a>
+                    </li>
+                    <li role="presentation" class="nav-item">
+                      <a class="nav-link" href="#tab-3" aria-controls="tab-3" role="tab" data-toggle="tab">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios3"
+                            value="option3" /> Monthly </label>
+                      </a>
+                    </li>
+
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab-1" role="tabpanel">
+                      <form [formGroup]="dailyForm" (ngSubmit)="onDailyFormSubmit()">
+                        <div class="row">
+                          <div class="col-12">
+                            <label class="form-check-label">
+                              <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1"
+                                checked value="option1" /> &nbsp; Every </label> &nbsp;
+                            <input type="text" formControlName="noOfDays" class="form-control"
+                              style="width: 50px; display: inline-block; padding: 3px 10px; height: 34px;"
+                              placeholder="dd" (keypress)="onKeyPress($event)" minlength="1" maxlength="2" readonly />
+                            Day's &nbsp;
+                            <input type="time" class="form-control" formControlName="time"
+                              style="width: 150px; display: inline-block; padding: 3px 10px; height: 34px;" required />
+                          </div>
+                        </div> <br> <br>
+                        <div class="pb-5"> <button type="submit" class="btn btn-primary " [disabled]="!dailyForm.valid">
+                            Save </button> </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane" id="tab-2" role="tabpanel">
+                      <form [formGroup]="weeklyForm" (ngSubmit)="onWeeklyFormSubmit()">
+                        <div class="row">
+                          <div class="col-12">
+                            <h6 style="margin-left: -20px;">
+                              <span> Recur every </span> &nbsp; <input type="text" class="form-control"
+                                style="width: 50px; display: inline-block; padding: 3px 10px; height: 34px;"
+                                formControlName="date" placeholder="dd" (keypress)="onKeyPress($event)" minlength="1"
+                                maxlength="2" readonly />
+                              &nbsp; Week &nbsp;
+                              <input type="time" class="form-control" formControlName="time" placeholder="hh:mm:ss"
+                                style="width: 150px; display: inline-block; padding: 3px 10px; height: 34px;"
+                                required />
+                            </h6>
+
+                            <div class="row ">
+                              <div class="col-md-3 mb-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Sunday" required /> Sunday </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Monday" required /> Monday </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Tuesday" required /> Tuesday </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Wednessday" required /> Wednessday </label>
+                              </div>
+                              <div class="col-md-3 ">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Thursday" required /> Thursday </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Friday" required /> Friday </label>
+                              </div>
+                              <div class="col-md-3">
+                                <label class="form-check-label">
+                                  <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
+                                    value="Saturday" required /> Saturday </label>
+                              </div>
+
+
+
+                            </div>
+                          </div> <br> <br>
+                        </div>
+                        <div class="pb-5"> <button type="submit" class="btn btn-primary mt-5"
+                            [disabled]="!weeklyForm.valid"> Save </button> </div>
+                      </form>
+                    </div>
+                    <div class="tab-pane" id="tab-3" role="tabpanel">
+                      <form [formGroup]="monthlyForm" (ngSubmit)="onMonthlyFormSubmit()">
+                        <div class="row">
+                          <div class="col-12">
+                            <input type="radio" class="form-check-input mt-2" name="optionsRadios2" id="optionsRadios2"
+                              checked value="option1" /> Day &nbsp; &nbsp;
+                            <input type="number" class="form-control" formControlName="date" placeholder="dd"
+                              style="width: 60px; display: inline-block; padding: 3px 10px; height: 34px;"
+                              (keypress)="onKeyPress($event)" min="1" max="31" required /> &nbsp;
+                            <input type="time" class="form-control"
+                              style="width: 150px; display: inline-block; padding: 3px 10px; height: 34px;"
+                              formControlName="time" required />&nbsp; of
+                            every &nbsp;
+                            <input type="text" class="form-control" formControlName="monthCount" placeholder="mm"
+                              style="width: 60px; display: inline-block; padding: 3px 10px; height: 34px;"
+                              (keypress)="onKeyPress($event)" minlength="1" maxlength="2" readonly />
+                            Month(s)
+                          </div>
+                        </div>
+                        <div class="pb-5"> <button type="submit" class="btn btn-primary mt-5"
+                            [disabled]="!monthlyForm.valid"> Save </button> </div>
+                      </form>
+                    </div><br> <br>
+
+                  </div>
+                </div>
+                <!-- <div class="pb-5"> <button type="button" class="btn btn-primary offset-md-2"> Save </button> </div> -->
+              </div>
+
+              <div class="tab-pane" id="tabs-2" role="tabpanel">
+
+                <div class="pt-5 pl-3 pb-5">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                      value="option1">
+                    <label class="form-check-label ml-1" for="inlineRadio1"> Warehouse </label>
+                  </div> &nbsp; &nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" checked
+                      value="option2">
+                    <label class="form-check-label ml-1" for="inlineRadio2"> Store </label>
+                  </div> &nbsp; &nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                      value="option3">
+                    <label class="form-check-label ml-1" for="inlineRadio3">Product Category</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane" id="tabs-3" role="tabpanel">
+                <div class="pt-5 pl-3 pb-5">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" (click)="checkall($event)" id="checkAll" type="checkbox">
+                    <label class="form-check-label  ml-1" for="inlineCheckbox1"> All </label>
+                  </div>&nbsp; &nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkItemA" value="option2">
+                    <label class="form-check-label  ml-1" for="inlineCheckbox2">A</label>
+                  </div>&nbsp; &nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkItemB" value="option3">
+                    <label class="form-check-label  ml-1" for="inlineCheckbox3">B</label>
+                  </div>&nbsp; &nbsp;
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="checkItemC" value="option3">
+                    <label class="form-check-label  ml-1" for="inlineCheckbox3">C</label>
+                  </div>&nbsp; &nbsp;
+                </div>
+
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->
+</div>
+
+<!-- <script>
+  $(document).ready(function () {
+    $("#checkAll").click(function () {
+      $('input:checkbox').not(this).prop('checked', this.checked);
+    });
+  })
+</script> -->

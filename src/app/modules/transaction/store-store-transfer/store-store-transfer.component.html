@@ -1,0 +1,186 @@
+
+
+
+<!-- partial -->
+<div class="content-wrapper">
+    <div class=" container">
+      <div class=" pb-0">
+
+
+        <div class="row">
+          <div class="header-right mt-md-2 mt-lg-0 w-100">
+            <div class=" align-items-center d-inline-block">
+              <a href="transaction">
+                <p class="m-0 pe-3">Transaction Data</p>
+              </a>
+              <a class="ps-3 me-4">
+                <p class="m-0">Inter Store Transfer Configuration</p>
+              </a>
+            </div>
+            <!-- <div class=""  style="display: inline-block;  float: right;">
+              <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text" style="height:30px">
+                <i class="mdi mdi-arrow-left"></i> Back</button>
+            </div> -->
+          </div>
+        </div>
+       
+
+        <div class="col-lg-12 grid-margin stretch-card mt-3">
+          <div class="card">
+            <div class="card-body">
+
+              <div class="mb-3">
+                <h3 class="d-inline-block"> Inter Store Transfer Configuration </h3>
+                <!-- <button type="button" class="float-end btn btn-sm btn-primary mt-2 mt-sm-0 btn-icon-text">
+                  <i class="mdi mdi-plus-circle"></i> Add Store </button> -->
+              </div>
+
+              <div class="clearfix"></div>
+              <div class="product-filters">
+                
+                <div class="card">
+                  <div class="card-body">
+                
+                    <div class="row">
+                     
+                  
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">Store ID</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Store ID" aria-label="Username" />
+                    </div>
+                  </div>
+                 
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">Store Name</label>
+                      <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option>Store Name </option>
+                        <option>Electonic Store  </option>
+                        <option> Home Entertainment Store </option>
+                        <option> Hatta Electronic Showroom </option>
+                        
+                        
+
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">SKU Code</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="SKU Code" aria-label="Username" />
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect3">Product Name</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Product Name" aria-label="Username" />
+                    </div>
+                  </div>
+
+                  
+                  <div class="col-md-3">
+                    <br>
+                  <button type="button" class=" btn btn-sm btn-success mt-2 mt-sm-0 btn-icon-text">
+                    <i class="mdi mdi-checkbox-marked-circle-outline"></i> Filter </button>
+                  </div>
+
+                  </div>
+
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="clearfix"></div>
+              <div class="table-responsive">
+                <table class="table table-bordered">
+                  <thead>
+                    <tr>
+                      <th>Product Name</th>
+                      <th> SKU ID</th>
+                      <th>Store Name</th>
+                      <th width="100px">Avilable<br> Qty</th>
+                      <th width="100">Transfer <br>Qty</th>
+                      <th>Transferd Store<br> Name</th>
+                      <th width="80px">Actions</th>
+                    </tr>
+
+                    <!-- <tr>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                      <th> <input type="text" class="form-control form-control-sm" > </th>
+                    </tr> -->
+
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>SANSUI ES32T1H, 32 - inch HD 720P LED TV </td>
+                      <td>	SN12345</td>
+                      <td>Electonic Store</td>
+                      <td>109 </td>
+                      <td> <input type="text" class="form-control form-control-sm" value="50"  /></td>
+                      <td> <input type="text" class="form-control form-control-sm" value="Home Entertainment Store"  /></td>
+                      
+                      <td> <span class="btn btn-sm btn-success d-inline-block"> Save </span></td>
+                    </tr>
+
+                    <tr>
+                      <td>Legami Beach Towel - Panda</td>
+                      <td>SN35235</td>
+                      <td>Home Entertainment Store</td>
+                      <td>50  </td>
+                      <td> <input type="text" class="form-control form-control-sm" value="10"  /></td>
+                      <td>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                          <option>Electonic Store  </option>
+                        <option> Home Entertainment Store </option>
+                        <option> Hatta Electronic Showroom </option>
+                        </select>
+                      </td> 
+                      <td> <span class="btn btn-sm btn-primary d-inline-block"> Edit </span></td>
+                  </tr>
+
+                  <tr>
+                    <td>Sony X85J 55 Inch TV</td>
+                    <td>SN45565</td>
+                    <td>Hatta Electronic Showroom</td>
+                    <td>2500  </td>
+                    <td> <input type="text" class="form-control form-control-sm" value="500"  /></td>
+                    <td>
+                      <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option>Electonic Store  </option>
+                        <option> Home Entertainment Store </option>
+                        <option> Hatta Electronic Showroom </option>
+                      </select>
+                    </td> 
+                    <td> <span class="btn btn-sm btn-primary d-inline-block"> Edit </span></td>
+                </tr>
+
+                    
+                    
+
+                    
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+      </div>
+      <!-- content-wrapper ends -->
+     
+    </div>
+    <!-- main-panel ends -->
+  </div>
+  <!-- page-body-wrapper ends -->

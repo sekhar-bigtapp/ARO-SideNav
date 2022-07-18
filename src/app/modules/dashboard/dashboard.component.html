@@ -1,0 +1,418 @@
+<!-- partial -->
+<div class="content-wrapper">
+  <div class="container">
+    <div class=" pb-0">
+
+      <!-- first row starts here -->
+
+      <div class="row">
+        <div class="header-right mt-md-2 mt-lg-0 w-100">
+          <div class=" align-items-center d-inline-block">
+            <a href="#" style="border: none;">
+              <p class="m-0 pe-3">Dashboard</p>
+            </a>
+
+          </div>
+          <!-- <div class=""  style="display: inline-block;  float: right;">
+                  <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text" style="height:30px">
+                    <i class="mdi mdi-arrow-left"></i> Back</button>
+                </div> -->
+        </div>
+      </div>
+
+      <div class="col-lg-12 grid-margin stretch-card mt-3">
+        <div class="card">
+          <div class="card-body">
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#tabs-11" role="tab"> ARO Dashboard </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#tabs-21" role="tab">KPI Dashboard </a>
+              </li>
+
+            </ul><!-- Tab panes -->
+            <div class="tab-content">
+              <div class="tab-pane active" id="tabs-11" role="tabpanel">
+
+                <iframe title="ARO DB-New" width="100%" height="800"
+                  src="https://app.powerbi.com/reportEmbed?reportId=baca8473-a7e2-4a2c-a84a-332a175655f7&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
+                  frameborder="0" allowFullScreen="true"></iframe>
+
+              </div>
+              <div class="tab-pane" id="tabs-21" role="tabpanel">
+                <iframe title="POC_20220621" width="100%" height="690"
+                  src="https://app.powerbi.com/reportEmbed?reportId=a356787e-fcd4-4c1c-a7e3-a43f0ec14176&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
+                  frameborder="0" allowFullScreen="true"></iframe>
+              </div>
+            </div>
+            <!--  -->
+
+
+            <div class="row">
+
+              <div class="col-md-6">
+                <div class="landing-page-table-head">
+                  <h6> Store Reorder Quantity</h6>
+                </div>
+                <div class="filter-table-data">
+                  <div class="table-responsive table-stripe">
+                    <table mat-table [dataSource]="processData" *ngIf="!!processData" matSort
+                      class="mat-datagrid w-100 table-bordered">
+                      <ng-container matColumnDef="Product_Name">
+                        <th mat-header-cell *matHeaderCellDef style="width: 200px; " scope="col">
+                          <label mat-sort-header>
+                            Product Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Product_Name}} </td>
+                      </ng-container>
+
+
+                      <!-- <ng-container matColumnDef="SKU_ID">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            SKUCode
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.SKU_ID}} </td>
+                      </ng-container> -->
+
+                      <ng-container matColumnDef="Re_Order_Quantity">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Re-Ordered
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Re_Order_Quantity}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="OverriderReorderQty">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Overrider Re-order
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <section *ngIf="!element.editMode">{{element.Re_Order_Quantity}}</section>
+                          <input type="number" *ngIf="element.editMode" style="width:90px;" placeholder="Qty"
+                            [(ngModel)]="overrideReorder" />
+                        </td>
+                      </ng-container>
+
+                      <!-- <ng-container matColumnDef="Expected_delivary_Date">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Expected Delivery Data
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Expected_delivary_Date | date: 'dd/MM/yyyy'}}
+                        </td>
+                      </ng-container> -->
+
+                      <ng-container matColumnDef="Supplier_Name">
+                        <th class="w-75px" style="width: 50px;" mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Supplier Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Supplier_Name}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Actions">
+                        <th mat-header-cell *matHeaderCellDef style="width: 50px; display: contents;" scope="col">
+                          <label>
+                            Actions
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <span style="cursor: pointer;">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true" (click)="onProdEdit(element)"
+                              *ngIf="!element.editMode"></i> &nbsp;
+                            <i class="fa fa-floppy-o" aria-hidden="true" (click)="onProdSave(element)"
+                              *ngIf="element.editMode"></i>
+                          </span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayColumnsReorder"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayColumnsReorder;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="pageSizeReorder" [hidden]="!processData" [pageSizeOptions]="[5, 10, 25]"
+                      aria-label="Select page">
+                    </mat-paginator>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-6">
+                <div class="landing-page-table-head">
+                  <h6> Physical stock</h6>
+                </div>
+                <div class="filter-table-data ">
+                  <div class="table-responsive table-stripe">
+                    <table mat-table [dataSource]="physicalStockCheckData" *ngIf="!!physicalStockCheckData" matSort
+                      class="mat-elevation-z8 w-100">
+                      <!-- <ng-container matColumnDef="SKU_ID">
+                        <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                          <label mat-sort-header>
+                            SKU ID
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.SKU_ID}} </td>
+                      </ng-container> -->
+
+
+                      <ng-container matColumnDef="Product">
+                        <th mat-header-cell *matHeaderCellDef style="width: 100px;" scope="col">
+                          <label mat-sort-header>
+                            Product Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Product}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Store_name">
+                        <th mat-header-cell *matHeaderCellDef scope="col" style="width: 120px;">
+                          <label mat-sort-header>
+                            Store Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Store_name}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Beginning_Stock">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Available Qty
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          {{element.Beginning_Stock}}
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Physical_Stock_Check">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Physical Verified Qty
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Physical_Stock_Check}}
+                        </td>
+                      </ng-container>
+
+                      <!-- <ng-container matColumnDef="Actions">
+                        <th mat-header-cell *matHeaderCellDef style="width: 50px;" scope="col">
+                          <label>
+                            Actions
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <span style="cursor: pointer;">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                            &nbsp;
+                            <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                          </span>
+                        </td>
+                      </ng-container> -->
+
+                      <tr mat-header-row *matHeaderRowDef="displayColumnsPhysicalStock"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayColumnsPhysicalStock;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="pageSizePhysicalStock" [hidden]="!physicalStockCheckData"
+                      [pageSizeOptions]="[5,10, 25, 50]" aria-label="Select page">
+                    </mat-paginator>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+
+              <div class="col-md-5">
+                <div class="landing-page-table-head">
+                  <h6> Store to store Transfered Config</h6>
+                </div>
+                <div class="filter-table-data ">
+                  <div class="table-responsive table-stripe">
+                    <table mat-table [dataSource]="storeTransferData" *ngIf="!!storeTransferData" matSort
+                      class="mat-elevation-z8 mat-datagrid  table-bordered w-100">
+
+                      <!-- <ng-container matColumnDef="Store_ID">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Store ID
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Store_ID}} </td>
+                </ng-container> -->
+
+                      <ng-container matColumnDef="Store_Name">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Store Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Store_Name}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Distance">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Distance
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                            [value]="element.Distance" (change)="onDistanceChange(element, $event)">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                            <option value="40">40</option>
+                          </select>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Store_Store_Transferd_Config">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Store Store Transferd Config
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element" class="ml-5">
+                          <!-- <section *ngIf="!element.Edit"> {{element.Store_Store_Transferd_Config==1?'Yes':'No'}}</section>
+                    <select *ngIf="element.Edit" value="{{element.Store_Store_Transferd_Config}}"
+                      class="form-control form-control-sm" id="exampleFormControlSelect1">
+                      <option value="1">Yes </option>
+                      <option value="0">No </option>
+                    </select> -->
+                          <mat-slide-toggle (change)="onChange(element,$event)"
+                            [checked]="element.Store_Store_Transferd_Config==1?true:false"></mat-slide-toggle>
+
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Actions">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Actions
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <!-- <span *ngIf="!element.Edit" (click)="OnStoreEdit(element)"
+                      class="btn btn-sm btn-primary d-inline-block"> Edit </span> -->
+                          <span (click)="onSave(element)"> <i class="fa fa-floppy-o" aria-hidden="true"></i> </span>
+                        </td>
+                      </ng-container>
+
+                      <tr mat-header-row *matHeaderRowDef="displayColumnsStoreTranser"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayColumnsStoreTranser;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="pageSizeStoreTranser" [hidden]="!storeTransferData"
+                      [pageSizeOptions]="[10, 25, 50]" aria-label="Select page">
+                    </mat-paginator>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-7">
+                <div class="landing-page-table-head">
+                  <h6> Forecasting Configuration</h6>
+                </div>
+                <div class="filter-table-data ">
+                  <div class="table-responsive table-stripe">
+                    <table mat-table [dataSource]="forecastMasterData" *ngIf="!!forecastMasterData" matSort
+                      class="mat-elevation-z8 mat-datagrid w-100 table-bordered">
+
+                      <ng-container matColumnDef="Time_Key">
+                        <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                          <label mat-sort-header>
+                            Date
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Time_Key}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Store_Name">
+                        <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                          <label mat-sort-header>
+                            Store Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Store_Name}} </td>
+                      </ng-container>
+
+
+                      <ng-container matColumnDef="Product_Name">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Product Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Product_Name}} </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Sales_Volume">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Sales Value
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">{{element.Sales_Volume}}</td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Forecasted_Volume">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Forecasted Volume
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Forecasted_Volume}}
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="NewForcastVolume">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            New Forecasted Volume
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element">
+                          <section *ngIf="isPTenValue">{{element.P10}}</section>
+                          <section *ngIf="isPFiftyValue">{{element.P50}}</section>
+                          <section *ngIf="isPNintyValue">{{element.P90}}</section>
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Category_Name">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Category Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Category_Name}} </td>
+                      </ng-container>
+
+
+                      <tr mat-header-row *matHeaderRowDef="displayColumnsForcastConfig"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayColumnsForcastConfig;"></tr>
+                    </table>
+                    <mat-paginator [pageSize]="pageSizeForcastConfig" [hidden]="!forecastMasterData"
+                      [pageSizeOptions]="[5,10, 25, 50]" aria-label="Select page">
+                    </mat-paginator>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
