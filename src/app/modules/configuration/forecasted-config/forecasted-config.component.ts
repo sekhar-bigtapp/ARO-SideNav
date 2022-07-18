@@ -16,23 +16,25 @@ export class ForecastedConfigComponent implements OnInit {
 
   pipe = new DatePipe('en-US');
   forecastForm!: FormGroup;
-  displayColumns: string[] = ['Time_Key', 'Store_Name', 'Product_Name', 'Category_Name', 'Sales_Volume', 'p-10', 'p-50', 'p-90', 'p-10_variance', 'p-50_variance', 'p-90_variance' ];
+  displayColumns: string[] = ['Time_Key', 'Store_Name', 'Product_Name',  'Sales_Volume', 'p10', 'p50', 'p90', 'p10Variance', 'p50Variance', 'p90Variance'];
   forecastMasterData!: MatTableDataSource<any>;
   pageSize = 10;
   isPTenValue: boolean = true;
   isPFiftyValue: boolean = false;
   isPNintyValue: boolean = false;
+  storeNameList: any;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
   constructor(
-    private router: Router, private formBuilder: FormBuilder, 
+    private router: Router, private formBuilder: FormBuilder,
     private forecastMasterService: forecastService,
     public datepipe: DatePipe
   ) { }
 
   ngOnInit(): void {
     this.forecastForm = this.formBuilder.group({
+
       Date: [""],
       Store_Name: [""],
       Category_Name: [""],
@@ -40,17 +42,23 @@ export class ForecastedConfigComponent implements OnInit {
       Product_Name: [''],
       SKU_ID: [''],
     });
+    this.getStoresNamesList();
   }
   backButtonClick() {
     this.router.navigate(['configurations']);
   }
+  getStoresNamesList() {
+    this.forecastMasterService.getStoreNames().subscribe((response) => {
+      console.log(response);
+      this.storeNameList = response;
+    });
+
+  }
 
   onforecastMasterClick() {
-    const myFormattedDate = this.pipe.transform(this.forecastForm.value.Date, 'yyyy-MM-dd');
-
     let obj = {
 
-      "Date": myFormattedDate,
+      "Date": this.forecastForm.value.Date,
       "Store_Name": this.forecastForm.value.Store_Name,
       "Category_Name": this.forecastForm.value.Category_Name,
       "Subcategory_Name": this.forecastForm.value.Subcategory_Name,

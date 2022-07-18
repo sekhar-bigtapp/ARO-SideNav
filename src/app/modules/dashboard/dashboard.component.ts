@@ -16,7 +16,7 @@ import { PhysicalStockCheckService } from '../transaction/physical-stock-check/p
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  displayColumnsReorder: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty', 'Expected_delivary_Date', 'Supplier_Name', 'Actions']
+  displayColumnsReorder: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty', 'Supplier_Name', 'Actions']
   displayColumnsPhysicalStock: string[] = ['SKU_ID', 'Product', 'Store_name', 'Beginning_Stock', 'Physical_Stock_Check', 'Variance'];
   displayColumnsStoreTranser: string[] = ['Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
   displayColumnsForcastConfig: string[] = ['Time_Key', 'Store_Name', 'Product_Name', 'Category_Name', 'Sales_Volume', 'Forecasted_Volume', 'NewForcastVolume'];
