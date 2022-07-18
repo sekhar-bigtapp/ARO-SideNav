@@ -16,8 +16,8 @@ import { PhysicalStockCheckService } from '../transaction/physical-stock-check/p
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  displayColumnsReorder: string[] = ['Product_Name', 'Re_Order_Quantity', 'OverriderReorderQty', 'Supplier_Name', 'Actions']
-  displayColumnsPhysicalStock: string[] = ['Product', 'Store_name', 'Beginning_Stock', 'Physical_Stock_Check'];
+  displayColumnsReorder: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty', 'Expected_delivary_Date', 'Supplier_Name', 'Actions']
+  displayColumnsPhysicalStock: string[] = ['SKU_ID', 'Product', 'Store_name', 'Beginning_Stock', 'Physical_Stock_Check', 'Variance'];
   displayColumnsStoreTranser: string[] = ['Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
   displayColumnsForcastConfig: string[] = ['Time_Key', 'Store_Name', 'Product_Name', 'Category_Name', 'Sales_Volume', 'Forecasted_Volume', 'NewForcastVolume'];
   processData!: MatTableDataSource<any>;
@@ -35,14 +35,27 @@ export class DashboardComponent implements OnInit {
   isPTenValue: boolean = true;
   isPFiftyValue: boolean = false;
   isPNintyValue: boolean = false;
+  processForm!: FormGroup;
+  minDate = new Date();
+  storeNameList: any;
+  PhysicalStockForm!: FormGroup;
 
   constructor(public storeService: StoreService,
     public physicalStockCheckService: PhysicalStockCheckService,
     public storeToStoreTransferService: StoreToStoreTransferConfigService,
-    public forecastMasterService: forecastService
+    public forecastMasterService: forecastService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.processForm = this.formBuilder.group({
+      date: [""],
+      storeName: [""],
+    });
+    this.PhysicalStockForm = this.formBuilder.group({
+      date: [""],
+      Store_ID: [""],
+    });
     this.getReorderData();
     this.getPhysicalStock();
     this.getStoreTransfer();
@@ -63,12 +76,34 @@ export class DashboardComponent implements OnInit {
       this.isPNintyValue = true;
     }
     console.log(this.isPTenValue, this.isPFiftyValue, this.isPNintyValue)
+    this.getStoresNamesList();
   }
 
-  getReorderData() {
-    const myFormattedDate = this.pipe.transform(new Date(), 'yyyy-MM-dd');
+  onFilterPhysicalStock() {
+    let inputObj = {
+      "Date": this.pipe.transform(this.PhysicalStockForm.value.date, 'yyyy-MM-dd'),
+      "Product": "",
+      "Store_ID": parseInt(this.PhysicalStockForm.value.Store_ID)
+    }
+    this.physicalStockCheckService.getPhysicalStockCheck(inputObj).subscribe((response) => {
+      console.log(response);
+      this.physicalStockCheckData = new MatTableDataSource(response);
+      this.physicalStockCheckData.paginator = this.paginator.toArray()[1];
+      this.physicalStockCheckData.sort = this.sort.toArray()[1];
+    })
+
+  }
+  getStoresNamesList() {
+    this.storeService.getStoreNames().subscribe((response) => {
+      console.log(response);
+      this.storeNameList = response;
+    });
+
+  }
+  onFilter() {
     let obj = {
-      "Date": "2022-01-01",
+      "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
+      "Store_Name": this.processForm.value.storeName,
       "Category_Name": "",
       "Subcategory_Name": "",
       "Product_Name": "",
@@ -83,6 +118,29 @@ export class DashboardComponent implements OnInit {
       this.processData.paginator = this.paginator.toArray()[0];
       this.processData.sort = this.sort.toArray()[0];
     })
+  }
+  getReorderData() {
+    const myFormattedDate = this.pipe.transform(new Date(), 'yyyy-MM-dd');
+    let obj = {
+      "Date": myFormattedDate,
+      "Store_Name": "",
+      "Category_Name": "",
+      "Subcategory_Name": "",
+      "Product_Name": "",
+      "SKU_ID": ""
+    }
+    this.storeService.searchStores(obj).subscribe((response) => {
+      for (let prod of response[0]) {
+        prod.editMode = false;
+      }
+      this.processData = new MatTableDataSource(response[0]);
+      console.log(this.processData);
+      this.processData.paginator = this.paginator.toArray()[0];
+      this.processData.sort = this.sort.toArray()[0];
+    })
+  }
+  onSubmit() {
+    console.log(this.processForm.value)
   }
 
   onProdEdit(product: any) {
@@ -109,8 +167,9 @@ export class DashboardComponent implements OnInit {
 
   getPhysicalStock() {
     let inputObj = {
-      "Product": "SAMSUNG 40-inch Class LED Smart FHD TV 1080P",
-      "Store_ID": "4"
+      "Date": this.pipe.transform(new Date(), 'yyyy-MM-dd'),
+      "Product": "",
+      "Store_ID": 3
     }
     this.physicalStockCheckService.getPhysicalStockCheck(inputObj).subscribe((response) => {
       console.log(response);
@@ -120,6 +179,7 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+  onPhysicalFormSubmit() { }
 
   getStoreTransfer() {
     let obj = {

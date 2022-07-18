@@ -38,7 +38,7 @@ export class PhysicalStockCheckComponent implements OnInit {
     let inputObj = {
       "Date": this.pipe.transform(this.physicalStockForm.value.date, 'yyyy-MM-dd'),
       "Product": this.physicalStockForm.value.productName,
-      "Store_ID": this.physicalStockForm.value.storeId
+      "Store_ID": parseInt(this.physicalStockForm.value.storeId)
     }
     this.physicalStockCheckService.getPhysicalStockCheck(inputObj).subscribe((response) => {
       console.log(response);

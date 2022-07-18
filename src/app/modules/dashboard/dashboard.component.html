@@ -51,14 +51,52 @@
 
             <div class="row">
 
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="landing-page-table-head">
                   <h6> Store Reorder Quantity</h6>
+                  <form [formGroup]="processForm" (ngSubmit)="onSubmit()">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <mat-form-field class="pt-2">
+                            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date"
+                              [min]="minDate" (dateChange)="onFilter()" />
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                          </mat-form-field>
+                        </div>
+                      </div>
+
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Store Name</label>
+                          <!-- <input type="text" class="form-control form-control-sm" placeholder="Store Name"
+                            aria-label="Username" placeholder="Store_Name" formControlName="storeName" /> -->
+                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                            formControlName="storeName" (change)="onFilter()">
+                            <option *ngFor="let store of storeNameList" [value]="store.Store_Name">{{store.Store_Name}}
+                            </option>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
                 </div>
                 <div class="filter-table-data">
                   <div class="table-responsive table-stripe">
                     <table mat-table [dataSource]="processData" *ngIf="!!processData" matSort
                       class="mat-datagrid w-100 table-bordered">
+
+                      <ng-container matColumnDef="Store_Name">
+                        <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                          <label mat-sort-header>
+                            Store Name
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Store_Name}} </td>
+                      </ng-container>
+
                       <ng-container matColumnDef="Product_Name">
                         <th mat-header-cell *matHeaderCellDef style="width: 200px; " scope="col">
                           <label mat-sort-header>
@@ -68,15 +106,15 @@
                         <td mat-cell *matCellDef="let element"> {{element.Product_Name}} </td>
                       </ng-container>
 
-
-                      <!-- <ng-container matColumnDef="SKU_ID">
+                      <ng-container matColumnDef="SKU_ID">
                         <th mat-header-cell *matHeaderCellDef scope="col">
                           <label mat-sort-header>
                             SKUCode
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element"> {{element.SKU_ID}} </td>
-                      </ng-container> -->
+                      </ng-container>
+
 
                       <ng-container matColumnDef="Re_Order_Quantity">
                         <th mat-header-cell *matHeaderCellDef scope="col">
@@ -100,7 +138,7 @@
                         </td>
                       </ng-container>
 
-                      <!-- <ng-container matColumnDef="Expected_delivary_Date">
+                      <ng-container matColumnDef="Expected_delivary_Date">
                         <th mat-header-cell *matHeaderCellDef scope="col">
                           <label mat-sort-header>
                             Expected Delivery Data
@@ -108,7 +146,7 @@
                         </th>
                         <td mat-cell *matCellDef="let element"> {{element.Expected_delivary_Date | date: 'dd/MM/yyyy'}}
                         </td>
-                      </ng-container> -->
+                      </ng-container>
 
                       <ng-container matColumnDef="Supplier_Name">
                         <th class="w-75px" style="width: 50px;" mat-header-cell *matHeaderCellDef scope="col">
@@ -146,26 +184,56 @@
 
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-12">
                 <div class="landing-page-table-head">
                   <h6> Physical stock</h6>
                 </div>
+                <form [formGroup]="PhysicalStockForm" (ngSubmit)="onPhysicalFormSubmit()">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <mat-form-field class="pt-2">
+                          <input matInput [matDatepicker]="picker2" formControlName="date" placeholder="Choose a date"
+                             (dateChange)="onFilterPhysicalStock()" />
+                          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker2></mat-datepicker>
+                        </mat-form-field>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Store Name</label>
+                        <!-- <input type="text" class="form-control form-control-sm" placeholder="Store Name"
+                          aria-label="Username" placeholder="Store_Name" formControlName="storeName" /> -->
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                          formControlName="Store_ID" (change)="onFilterPhysicalStock()">
+                          <option value="1"> Electonic Store</option>
+                            <option value="2"> Home Entertainment Store</option>
+                            <option value="3"> Hatta Electronic Showroom</option>
+                            <option value="4"> TV showroom</option>
+                            <option value="5"> Jebel Electronic Showroom</option>
+
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </form>
                 <div class="filter-table-data ">
                   <div class="table-responsive table-stripe">
                     <table mat-table [dataSource]="physicalStockCheckData" *ngIf="!!physicalStockCheckData" matSort
                       class="mat-elevation-z8 w-100">
-                      <!-- <ng-container matColumnDef="SKU_ID">
+                      <ng-container matColumnDef="SKU_ID">
                         <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
                           <label mat-sort-header>
                             SKU ID
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element"> {{element.SKU_ID}} </td>
-                      </ng-container> -->
+                      </ng-container>
 
 
                       <ng-container matColumnDef="Product">
-                        <th mat-header-cell *matHeaderCellDef style="width: 100px;" scope="col">
+                        <th mat-header-cell *matHeaderCellDef  scope="col">
                           <label mat-sort-header>
                             Product Name
                           </label>
@@ -174,7 +242,7 @@
                       </ng-container>
 
                       <ng-container matColumnDef="Store_name">
-                        <th mat-header-cell *matHeaderCellDef scope="col" style="width: 120px;">
+                        <th mat-header-cell *matHeaderCellDef scope="col" >
                           <label mat-sort-header>
                             Store Name
                           </label>
@@ -200,6 +268,16 @@
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element"> {{element.Physical_Stock_Check}}
+                        </td>
+                      </ng-container>
+
+                      <ng-container matColumnDef="Variance">
+                        <th mat-header-cell *matHeaderCellDef scope="col">
+                          <label mat-sort-header>
+                            Variance
+                          </label>
+                        </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Variance}}
                         </td>
                       </ng-container>
 
@@ -230,7 +308,7 @@
 
             </div>
 
-            <div class="row">
+            <!-- <div class="row">
 
               <div class="col-md-5">
                 <div class="landing-page-table-head">
@@ -241,14 +319,7 @@
                     <table mat-table [dataSource]="storeTransferData" *ngIf="!!storeTransferData" matSort
                       class="mat-elevation-z8 mat-datagrid  table-bordered w-100">
 
-                      <!-- <ng-container matColumnDef="Store_ID">
-                  <th mat-header-cell *matHeaderCellDef scope="col">
-                    <label mat-sort-header>
-                      Store ID
-                    </label>
-                  </th>
-                  <td mat-cell *matCellDef="let element"> {{element.Store_ID}} </td>
-                </ng-container> -->
+                     
 
                       <ng-container matColumnDef="Store_Name">
                         <th mat-header-cell *matHeaderCellDef scope="col">
@@ -283,12 +354,7 @@
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element" class="ml-5">
-                          <!-- <section *ngIf="!element.Edit"> {{element.Store_Store_Transferd_Config==1?'Yes':'No'}}</section>
-                    <select *ngIf="element.Edit" value="{{element.Store_Store_Transferd_Config}}"
-                      class="form-control form-control-sm" id="exampleFormControlSelect1">
-                      <option value="1">Yes </option>
-                      <option value="0">No </option>
-                    </select> -->
+                          
                           <mat-slide-toggle (change)="onChange(element,$event)"
                             [checked]="element.Store_Store_Transferd_Config==1?true:false"></mat-slide-toggle>
 
@@ -302,8 +368,7 @@
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element">
-                          <!-- <span *ngIf="!element.Edit" (click)="OnStoreEdit(element)"
-                      class="btn btn-sm btn-primary d-inline-block"> Edit </span> -->
+                          
                           <span (click)="onSave(element)"> <i class="fa fa-floppy-o" aria-hidden="true"></i> </span>
                         </td>
                       </ng-container>
@@ -407,7 +472,7 @@
                 </div>
               </div>
 
-            </div>
+            </div> -->
 
           </div>
         </div>
