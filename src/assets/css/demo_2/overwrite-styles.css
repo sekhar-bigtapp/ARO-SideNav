@@ -126,6 +126,7 @@ th.mat-header-cell:first-of-type { padding-left: 0px !important;}
 td.mat-cell { padding: 5px 10px !important;} 
 .master-data h4 {font-size: 16px;}
 
+.landing-page-table-head  { background-color: #f3f6f9; padding: 10px;}
 .landing-page-table-head h6{ background-color: #f3f6f9; padding: 10px; margin-bottom: 0px;}
 .w-75px { width: 75px;}
 .filter-table-data .form-control {font-size: 12px; padding: 5px;}

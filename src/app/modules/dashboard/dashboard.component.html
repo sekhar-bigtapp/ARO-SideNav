@@ -35,15 +35,15 @@
             <div class="tab-content">
               <div class="tab-pane active" id="tabs-11" role="tabpanel">
 
-                <iframe title="ARO DB-New" width="100%" height="800"
-                  src="https://app.powerbi.com/reportEmbed?reportId=baca8473-a7e2-4a2c-a84a-332a175655f7&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
-                  frameborder="0" allowFullScreen="true"></iframe>
+                <iframe title="ARO Dashboard Excel V0.2" width="100%" height="800" src="https://app.powerbi.com/reportEmbed?reportId=7f63d2e4-f69a-4c62-b873-4fed94276307&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
 
               </div>
               <div class="tab-pane" id="tabs-21" role="tabpanel">
-                <iframe title="POC_20220621" width="100%" height="690"
+                <!-- <iframe title="POC_20220621" width="100%" height="690"
                   src="https://app.powerbi.com/reportEmbed?reportId=a356787e-fcd4-4c1c-a7e3-a43f0ec14176&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
-                  frameborder="0" allowFullScreen="true"></iframe>
+                  frameborder="0" allowFullScreen="true"></iframe> -->
+
+                  <iframe title="KPI Dashboard" width="100%" height="650" src="https://app.powerbi.com/reportEmbed?reportId=09f6c512-7354-4c46-8f4f-afb6bf55ccf8&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
               </div>
             </div>
             <!--  -->
@@ -53,11 +53,11 @@
 
               <div class="col-md-12">
                 <div class="landing-page-table-head">
-                  <h6> Store Reorder Quantity</h6>
-                  <form [formGroup]="processForm" (ngSubmit)="onSubmit()">
-                    <div class="row">
-                      <div class="col-md-3">
-                        <div class="form-group">
+                  <h6 class="d-inline-block"> Store Reorder Quantity</h6>
+                  <form    style="float:right; margin-top: -15px;" [formGroup]="processForm" (ngSubmit)="onSubmit()">
+                    <div class="">
+                      <div class="col-md-3" style="width:220px; display:inline-block;">
+                        <div class="form-group" style="margin-bottom:0px">
                           <mat-form-field class="pt-2">
                             <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Choose a date"
                               [min]="minDate" (dateChange)="onFilter()" />
@@ -67,13 +67,20 @@
                         </div>
                       </div>
 
-                      <div class="col-md-3">
-                        <div class="form-group">
-                          <label for="exampleFormControlSelect1">Store Name</label>
+                      <div class="col-md-3" style="width:300px; display:inline-block;">
+                        <div class="form-group" style="margin-bottom:0px">
+                          <label for="exampleFormControlSelect1" style="display: inline-block; padding-top: 10px;
+                          margin-right: 15px;">Store Name</label>
                           <!-- <input type="text" class="form-control form-control-sm" placeholder="Store Name"
                             aria-label="Username" placeholder="Store_Name" formControlName="storeName" /> -->
-                          <select class="form-control form-control-sm" id="exampleFormControlSelect1"
-                            formControlName="storeName" (change)="onFilter()">
+                          <select class="form-control form-control-sm" style="display: inline-block;
+                          width: 200px;
+                          border: none;
+                          outline: 0px;
+                          border-bottom: 1px solid #474747;
+                          border-radius: 0px;
+                          background: transparent;" id="exampleFormControlSelect1"
+                            formControlName="storeName" (change)="onFilter()" placeholder="Store Name">
                             <option *ngFor="let store of storeNameList" [value]="store.Store_Name">{{store.Store_Name}}
                             </option>
 
@@ -83,6 +90,7 @@
                     </div>
                   </form>
                 </div>
+                <div class="clearfix"></div>
                 <div class="filter-table-data">
                   <div class="table-responsive table-stripe">
                     <table mat-table [dataSource]="processData" *ngIf="!!processData" matSort
@@ -186,11 +194,11 @@
 
               <div class="col-md-12">
                 <div class="landing-page-table-head">
-                  <h6> Physical stock</h6>
-                </div>
-                <form [formGroup]="PhysicalStockForm" (ngSubmit)="onPhysicalFormSubmit()">
-                  <div class="row">
-                    <div class="col-md-3">
+                  <h6 class="d-inline-block"> Physical stock</h6>
+                
+                <form style="float:right; margin-top: -15px;" [formGroup]="PhysicalStockForm" (ngSubmit)="onPhysicalFormSubmit()">
+                  <div class="d-inline-block">
+                    <div class="col-md-3"  style="width:220px; display:inline-block;">
                       <div class="form-group">
                         <mat-form-field class="pt-2">
                           <input matInput [matDatepicker]="picker2" formControlName="date" placeholder="Choose a date"
@@ -200,12 +208,19 @@
                         </mat-form-field>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3"  style="width:300px; display:inline-block;">
                       <div class="form-group">
-                        <label for="exampleFormControlSelect1">Store Name</label>
+                        <label for="exampleFormControlSelect1" style="display: inline-block; padding-top: 10px;
+                        margin-right: 15px;">Store Name</label>
                         <!-- <input type="text" class="form-control form-control-sm" placeholder="Store Name"
                           aria-label="Username" placeholder="Store_Name" formControlName="storeName" /> -->
-                        <select class="form-control form-control-sm" id="exampleFormControlSelect1"
+                        <select style="display: inline-block;
+                        width: 200px;
+                        border: none;
+                        outline: 0px;
+                        border-bottom: 1px solid #474747;
+                        border-radius: 0px;
+                        background: transparent;" class="form-control form-control-sm" id="exampleFormControlSelect1"
                           formControlName="Store_ID" (change)="onFilterPhysicalStock()">
                           <option value="1"> Electonic Store</option>
                             <option value="2"> Home Entertainment Store</option>
@@ -218,12 +233,16 @@
                     </div>
                   </div>
                 </form>
+              </div>
+
+                <div class="clearfix"></div>
+
                 <div class="filter-table-data ">
                   <div class="table-responsive table-stripe">
                     <table mat-table [dataSource]="physicalStockCheckData" *ngIf="!!physicalStockCheckData" matSort
                       class="mat-elevation-z8 w-100">
                       <ng-container matColumnDef="SKU_ID">
-                        <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                        <th mat-header-cell *matHeaderCellDef  scope="col">
                           <label mat-sort-header>
                             SKU ID
                           </label>
