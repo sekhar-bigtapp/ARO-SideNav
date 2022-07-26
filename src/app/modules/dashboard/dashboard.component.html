@@ -35,6 +35,8 @@
             <div class="tab-content">
               <div class="tab-pane active" id="tabs-11" role="tabpanel">
 
+                <!-- <iframe title="ARO Dashboard Excel V0.2" width="100%" height="800" src="https://app.powerbi.com/reportEmbed?reportId=7f63d2e4-f69a-4c62-b873-4fed94276307&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe> -->
+
                 <iframe title="ARO Dashboard Excel V0.2" width="100%" height="800" src="https://app.powerbi.com/reportEmbed?reportId=7f63d2e4-f69a-4c62-b873-4fed94276307&autoAuth=true&ctid=9f2e2b7d-6081-4b3a-b7f5-433b581f6a5f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXNvdXRoLWVhc3QtYXNpYS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D" frameborder="0" allowFullScreen="true"></iframe>
 
               </div>
@@ -49,7 +51,7 @@
             <!--  -->
 
 
-            <div class="row">
+            <div class="row" style="margin-top: -40px">
 
               <div class="col-md-12">
                 <div class="landing-page-table-head">
@@ -201,7 +203,7 @@
                     <div class="col-md-3"  style="width:220px; display:inline-block;">
                       <div class="form-group">
                         <mat-form-field class="pt-2">
-                          <input matInput [matDatepicker]="picker2" formControlName="date" placeholder="Choose a date"
+                          <input matInput [matDatepicker]="picker2" [max]="date" formControlName="date" placeholder="Choose a date"
                              (dateChange)="onFilterPhysicalStock()" />
                           <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                           <mat-datepicker #picker2></mat-datepicker>
@@ -221,12 +223,13 @@
                         border-bottom: 1px solid #474747;
                         border-radius: 0px;
                         background: transparent;" class="form-control form-control-sm" id="exampleFormControlSelect1"
-                          formControlName="Store_ID" (change)="onFilterPhysicalStock()">
-                          <option value="1"> Electonic Store</option>
-                            <option value="2"> Home Entertainment Store</option>
-                            <option value="3"> Hatta Electronic Showroom</option>
-                            <option value="4"> TV showroom</option>
-                            <option value="5"> Jebel Electronic Showroom</option>
+                          formControlName="Store_Name" (change)="onFilterPhysicalStock()">
+                          <option *ngFor="let store of storeNameList" [value]="store.Store_Name">{{store.Store_Name}}</option>
+                          <!-- <option value="Electonic Store"> Electonic Store</option>
+                            <option value="Home Entertainment Store"> Home Entertainment Store</option>
+                            <option value="Hatta Electronic Showroom"> Hatta Electronic Showroom</option>
+                            <option value="TV Showroom"> TV showroom</option>
+                            <option value="Jebel Electronic Showroom"> Jebel Electronic Showroom</option> -->
 
                         </select>
                       </div>
@@ -251,42 +254,42 @@
                       </ng-container>
 
 
-                      <ng-container matColumnDef="Product">
+                      <ng-container matColumnDef="Product_Name">
                         <th mat-header-cell *matHeaderCellDef  scope="col">
                           <label mat-sort-header>
                             Product Name
                           </label>
                         </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Product}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.Product_Name}} </td>
                       </ng-container>
 
-                      <ng-container matColumnDef="Store_name">
+                      <ng-container matColumnDef="Store_Name">
                         <th mat-header-cell *matHeaderCellDef scope="col" >
                           <label mat-sort-header>
                             Store Name
                           </label>
                         </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Store_name}} </td>
+                        <td mat-cell *matCellDef="let element"> {{element.Store_Name}} </td>
                       </ng-container>
 
-                      <ng-container matColumnDef="Beginning_Stock">
+                      <ng-container matColumnDef="Quantity_On_Hand">
                         <th mat-header-cell *matHeaderCellDef scope="col">
                           <label mat-sort-header>
                             Available Qty
                           </label>
                         </th>
                         <td mat-cell *matCellDef="let element">
-                          {{element.Beginning_Stock}}
+                          {{element.Quantity_On_Hand}}
                         </td>
                       </ng-container>
 
-                      <ng-container matColumnDef="Physical_Stock_Check">
+                      <ng-container matColumnDef="Physical_Verified_Quantity">
                         <th mat-header-cell *matHeaderCellDef scope="col">
                           <label mat-sort-header>
                             Physical Verified Qty
                           </label>
                         </th>
-                        <td mat-cell *matCellDef="let element"> {{element.Physical_Stock_Check}}
+                        <td mat-cell *matCellDef="let element"> {{element.Physical_Verified_Quantity}}
                         </td>
                       </ng-container>
 

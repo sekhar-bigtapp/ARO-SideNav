@@ -5,7 +5,9 @@
 export const environment = {
   production: false,
   // url: 'http://localhost:5001/'
-  url: 'http://54.179.68.250:5001/'
+  //url: 'http://54.179.68.250:5001/'
+  url: 'http://18.139.84.119:5002/'
+
 };
 
 

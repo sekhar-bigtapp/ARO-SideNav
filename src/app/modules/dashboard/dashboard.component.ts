@@ -17,7 +17,7 @@ import { PhysicalStockCheckService } from '../transaction/physical-stock-check/p
 })
 export class DashboardComponent implements OnInit {
   displayColumnsReorder: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty', 'Supplier_Name', 'Actions']
-  displayColumnsPhysicalStock: string[] = ['SKU_ID', 'Product', 'Store_name', 'Beginning_Stock', 'Physical_Stock_Check', 'Variance'];
+  displayColumnsPhysicalStock: string[] = ['SKU_ID', 'Product_Name', 'Store_Name', 'Quantity_On_Hand', 'Physical_Verified_Quantity','Variance'];
   displayColumnsStoreTranser: string[] = ['Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
   displayColumnsForcastConfig: string[] = ['Time_Key', 'Store_Name', 'Product_Name', 'Category_Name', 'Sales_Volume', 'Forecasted_Volume', 'NewForcastVolume'];
   processData!: MatTableDataSource<any>;
@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
   minDate = new Date();
   storeNameList: any;
   PhysicalStockForm!: FormGroup;
+  date=new Date();
 
   constructor(public storeService: StoreService,
     public physicalStockCheckService: PhysicalStockCheckService,
@@ -54,7 +55,8 @@ export class DashboardComponent implements OnInit {
     });
     this.PhysicalStockForm = this.formBuilder.group({
       date: [""],
-      Store_ID: [""],
+      Store_Name: [""],
+      
     });
     this.getReorderData();
     this.getPhysicalStock();
@@ -77,27 +79,36 @@ export class DashboardComponent implements OnInit {
     }
     console.log(this.isPTenValue, this.isPFiftyValue, this.isPNintyValue)
     this.getStoresNamesList();
+   // this.getStoreNames();
   }
 
   onFilterPhysicalStock() {
     let inputObj = {
       "Date": this.pipe.transform(this.PhysicalStockForm.value.date, 'yyyy-MM-dd'),
-      "Product": "",
-      "Store_ID": parseInt(this.PhysicalStockForm.value.Store_ID)
+      "Product_Name": "",
+      "Store_Name":this.PhysicalStockForm.value.Store_Name,
+      "SKU_ID":"",
     }
     this.physicalStockCheckService.getPhysicalStockCheck(inputObj).subscribe((response) => {
       console.log(response);
-      this.physicalStockCheckData = new MatTableDataSource(response);
+      this.physicalStockCheckData = new MatTableDataSource(response[0]);
       this.physicalStockCheckData.paginator = this.paginator.toArray()[1];
       this.physicalStockCheckData.sort = this.sort.toArray()[1];
     })
 
   }
+
+  
   getStoresNamesList() {
     this.storeService.getStoreNames().subscribe((response) => {
       console.log(response);
       this.storeNameList = response;
     });
+    this.physicalStockCheckService.getStoreNames().subscribe((response) => {
+      console.log(response);
+      this.storeNameList = response;
+    });
+
 
   }
   onFilter() {
@@ -168,12 +179,14 @@ export class DashboardComponent implements OnInit {
   getPhysicalStock() {
     let inputObj = {
       "Date": this.pipe.transform(new Date(), 'yyyy-MM-dd'),
-      "Product": "",
-      "Store_ID": 3
+      "Product_Name": "",
+      "Store_Name": "",
+      "SKU_ID": "",
+
     }
     this.physicalStockCheckService.getPhysicalStockCheck(inputObj).subscribe((response) => {
       console.log(response);
-      this.physicalStockCheckData = new MatTableDataSource(response);
+      this.physicalStockCheckData = new MatTableDataSource(response[0]);
       this.physicalStockCheckData.paginator = this.paginator.toArray()[1];
       this.physicalStockCheckData.sort = this.sort.toArray()[1];
     })

@@ -131,6 +131,10 @@ td.mat-cell { padding: 5px 10px !important;}
 .w-75px { width: 75px;}
 .filter-table-data .form-control {font-size: 12px; padding: 5px;}
 
+select.form-control{
+  color: #474747 !important;
+}
+
 .form-check-inline {
   display: -ms-inline-flexbox;
   display: inline-flex;
