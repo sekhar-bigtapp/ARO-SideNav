@@ -163,6 +163,7 @@ body {
   font-family: 'Proxima-Nova-Font';
   background: #0e4ca1;
 }
+.mat-sort-header-content{ color: #000;}
 /* @media (max-width: 992px){
   app-side-navigation {
   width: 70px;

@@ -16,7 +16,7 @@ import { PhysicalStockCheckService } from '../transaction/physical-stock-check/p
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  displayColumnsReorder: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty', 'Supplier_Name', 'Actions']
+  displayColumnsReorder: string[] = ['Time_key','Store_Name', 'Category_Name', 'Subcategory_Name', 'Product_Name', 'SKU_ID', 'Quantity_On_Hand', 'Forecasted_Volume', 'Transit_Stock', 'Re_Order_Quantity', 'OverriderReorderQty',  'Supplier_Name', 'Actions']
   displayColumnsPhysicalStock: string[] = ['SKU_ID', 'Product_Name', 'Store_Name', 'Quantity_On_Hand', 'Physical_Verified_Quantity','Variance'];
   displayColumnsStoreTranser: string[] = ['Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
   displayColumnsForcastConfig: string[] = ['Time_Key', 'Store_Name', 'Product_Name', 'Category_Name', 'Sales_Volume', 'Forecasted_Volume', 'NewForcastVolume'];
@@ -38,8 +38,12 @@ export class DashboardComponent implements OnInit {
   processForm!: FormGroup;
   minDate = new Date();
   storeNameList: any;
+  categoryNameList:any;
+  productNameList:any;
+  subCategoryNameList:any;
   PhysicalStockForm!: FormGroup;
   date=new Date();
+  blanketOverrideForm! : FormGroup;
 
   constructor(public storeService: StoreService,
     public physicalStockCheckService: PhysicalStockCheckService,
@@ -52,12 +56,23 @@ export class DashboardComponent implements OnInit {
     this.processForm = this.formBuilder.group({
       date: [""],
       storeName: [""],
+      CategoryName:[""],
+      SubcategoryName:[""],
+      ProductName:[""],
+
     });
     this.PhysicalStockForm = this.formBuilder.group({
       date: [""],
       Store_Name: [""],
       
     });
+
+    this.blanketOverrideForm = this.formBuilder.group({
+      BlanketValue: [""],
+     
+      
+    });
+
     this.getReorderData();
     this.getPhysicalStock();
     this.getStoreTransfer();
@@ -79,7 +94,10 @@ export class DashboardComponent implements OnInit {
     }
     console.log(this.isPTenValue, this.isPFiftyValue, this.isPNintyValue)
     this.getStoresNamesList();
+    this.getCategoryList();
    // this.getStoreNames();
+    this.getProductNamesList();
+    this.getSubCategoryList();
   }
 
   onFilterPhysicalStock() {
@@ -108,16 +126,67 @@ export class DashboardComponent implements OnInit {
       console.log(response);
       this.storeNameList = response;
     });
-
-
   }
-  onFilter() {
+
+  getCategoryList (){
+    this.storeService.getCategoryNames().subscribe((response) => {
+      console.log(response);
+      this.categoryNameList = response;
+    })
+  }
+
+  getSubCategoryList (){
+    let obj = { "Category_Name" :this.processForm.value.CategoryName}
+    this.storeService.getSubCategoryNames(obj).subscribe((response) => {
+      
+      //console.log(response);
+      //alert ();
+      this.subCategoryNameList = response;
+    })
+    
+  }
+  getProductNamesList(){
+    this.storeService.getProductNames().subscribe((response) => {
+      console.log(response);
+      this.productNameList = response;
+    })
+    
+  }
+
+  onBlanketSubmit(){
+    //const overrideValue = this.blanketOverrideForm.value.BlanketValue;
     let obj = {
       "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
-      "Store_Name": this.processForm.value.storeName,
-      "Category_Name": "",
-      "Subcategory_Name": "",
-      "Product_Name": "",
+      "Store_Name": "",
+      "Category_Name": this.processForm.value.CategoryName,
+      "Subcategory_Name": this.processForm.value.SubcategoryName,
+      "Product_Name": this.processForm.value.ProductName,
+      "SKU_ID": "",
+      "Blanket_Override": this.blanketOverrideForm.value.BlanketValue   
+    }
+
+    this.storeService.getBlanketQty(obj).subscribe((response) => {
+      
+      this.processData = new MatTableDataSource(response[0]);
+      console.log(this.processData);
+      this.onFilter();
+      // this.processData.paginator = this.paginator.toArray()[0];
+      // this.processData.sort = this.sort.toArray()[0];
+
+      
+
+    })
+    
+  }
+
+  onFilter() {
+    this.getSubCategoryList ();
+    let obj = {
+      "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
+      "Store_Name": "",
+      "Category_Name": this.processForm.value.CategoryName,
+      "Subcategory_Name": this.processForm.value.SubcategoryName,
+      "Product_Name": this.processForm.value.ProductName,
       "SKU_ID": ""
     }
     this.storeService.searchStores(obj).subscribe((response) => {
