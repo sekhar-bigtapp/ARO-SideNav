@@ -9,10 +9,10 @@
         <div class="header-right d-flex  mt-md-2 mt-lg-0 w-100">
           <div class="d-flex align-items-center">
             <a href="#">
-              <p class="m-0 pe-3">Configuration</p>
+              <p class="m-0 pe-3">System Configuration</p>
             </a>
             <a class="ps-3 me-4" href="#">
-              <p class="m-0">Scheduling</p>
+              <p class="m-0">System Job Schedules</p>
             </a>
           </div>
           <!-- <div class="float-right" style="flex-direction: row-reverse;">
@@ -27,23 +27,28 @@
           <div class="card-body pb-5">
 
             <div class="mb-3">
-              <h3 class="d-inline-block"> Scheduling </h3>
+              <h3 class="d-inline-block"> System Job Schedules </h3>
             </div>
 
             <div class="clearfix"></div>
 
             <ul class="nav nav-tabs" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"> Job Schedule tracker </a>
+                <a class="nav-link active" data-toggle="tab" href="#tabs-2" role="tab">Job Configuration </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">Job Schedule Config </a>
+                <a class="nav-link " data-toggle="tab" href="#tabs-1" role="tab"> Job Run History </a>
               </li>
+              
 
             </ul>
+
+
+
+
             <!-- Tab panes -->
             <div class="tab-content">
-              <div class="tab-pane active" id="tabs-1" role="tabpanel">
+              <div class="tab-pane " id="tabs-1" role="tabpanel">
                 <div class="clearfix"></div>
                 <div class="table-responsive">
                   <table mat-table [dataSource]="jobSchedulers" matSort class="mat-elevation-z8 mat-datagrid  table-bordered w-100">
@@ -104,19 +109,20 @@
                 </div>
               </div>
 
-              <div class="tab-pane" id="tabs-2" role="tabpanel">
+              <div class="tab-pane active" id="tabs-2" role="tabpanel">
 
                 <div class="job-list">
                   <div class="">
                     <div class="row mt-3">
-                      <label for="exampleFormControlSelect3" class="col-md-2 form-inline">Job Name </label>
-                      <select [(ngModel)]="jobName" class="form-control form-control-sm col-md-4"
+                      <label for="exampleFormControlSelect3" class="col-md-2 form-inline pt-3">Job Name </label>
+                      <div class="col-md-4">
+                      <select [(ngModel)]="jobName" class="form-control form-control-sm "
                         id="exampleFormControlSelect1">
                         <option value="Hyper-V Backup Job">Hyper-V Backup Job </option>
                         <option value="VMware - Biz dev server">VMware - Biz dev server </option>
 
                       </select>
-
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -203,7 +209,7 @@
                               <div class="col-md-3">
                                 <label class="form-check-label">
                                   <input type="radio" class="form-check-input" name="weekDay" formControlName="weekDay"
-                                    value="Wednessday" required/> Wednessday </label>
+                                    value="Wednesday" required/> Wednesday </label>
                               </div>
                               <div class="col-md-3 ">
                                 <label class="form-check-label">

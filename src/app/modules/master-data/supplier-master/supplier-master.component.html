@@ -8,7 +8,7 @@
         <div class="header-right mt-md-2 mt-lg-0 w-100">
           <div class=" align-items-center d-inline-block">
             <a href="masters">
-              <p class="m-0 pe-3">Master Data</p>
+              <p class="m-0 pe-3">Master Data Reports</p>
             </a>
             <a class="ps-3 me-4">
               <p class="m-0">Supplier Master</p>
@@ -107,7 +107,7 @@
                 <table mat-table [dataSource]="supplierMasterData" *ngIf="!!supplierMasterData" matSort
                   class="mat-elevation-z8 mat-datagrid w-100 table-bordered">
                   <ng-container matColumnDef="Supplier_Key">
-                    <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
+                    <th mat-header-cell *matHeaderCellDef  scope="col">
                       <label mat-sort-header>
                         Supplier Id
                       </label>

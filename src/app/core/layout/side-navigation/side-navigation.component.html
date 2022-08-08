@@ -27,10 +27,10 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="dashboard">ARO Dashboard </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="dashboard">KPI Dashboard</a>
+           <!--  <li class="nav-item">
+              <a class="nav-link" routerLink="optimizeReorder">Optimize Reorder</a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link" href="pages/ui-features/buttons.html">Distribution Centers </a>
             </li>
             <li class="nav-item">
@@ -49,18 +49,18 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <i class="mdi mdi-clipboard-text menu-icon"></i>
-          <span class="menu-title">Process</span>
+          <span class="menu-title">Process Override</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item">
-              <a class="nav-link" routerLink="process">Re Order</a>
+              <a class="nav-link" routerLink="process">Reorder Quantity Review</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link" href="pages/ui-features/dropdowns.html">Dropdowns</a>
+             <li class="nav-item">
+              <a class="nav-link" routerLink="store2storetransfer">Store - Store Transfer</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
               <a class="nav-link" href="pages/ui-features/typography.html">Typography</a>
             </li> -->
           </ul>
@@ -70,7 +70,7 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-transaction" aria-expanded="false" aria-controls="ui-transaction">
           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title">Transaction Data</span>
+          <span class="menu-title">Transactional Reports</span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-transaction">
@@ -78,43 +78,46 @@
             <li class="nav-item">
               <a class="nav-link" routerLink="pricemarkdown"> 
                 <i class="mdi mdi-coin menu-icon"></i> 
-                Price Markdown </a>
+                Price Markdown Report </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="phaseoutitem">
                 <i class="mdi mdi-reproduction menu-icon"></i> 
-                Phase out Items </a>
+                Phaseout Report </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="newlauchitem">
-                <i class=" mdi mdi-new-box menu-icon"></i> 
-                New Item Launch Date</a>
-            </li>
-            <li class="nav-item">
+            
+            <!-- <li class="nav-item">
               <a class="nav-link" routerLink="store2storetransfer">
                 <i class=" mdi mdi-store menu-icon"></i>  
                 Store – Store Transfer </a>
+            </li> -->
+            <li class="nav-item">
+              <a class="nav-link" routerLink="promotiondetails">
+                <i class=" mdi mdi-store menu-icon"></i> 
+                Promotion Master </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="stockregister">
                 <i class=" mdi mdi-stocking menu-icon"></i>
-                Stock Register </a>
+                Stock Register</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="possale">
                 <i class="mdi mdi-store-24-hour menu-icon"></i> 
-                POS Sales</a>
+                POS Transactions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="promotiondetails">
-                <i class=" mdi mdi-sale menu-icon"></i> 
-                Promotion Details </a>
+              <a class="nav-link" routerLink="newlauchitem">
+                <i class=" mdi mdi-new-box menu-icon"></i> 
+                Upcoming Item Launches</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link" routerLink="physicalstock">
                 <i class=" mdi mdi-check-decagram menu-icon"></i>  
-                Physical Stock check </a>
+                Physical Stock Check Report </a>
             </li>
+
             
           </ul>
         </div>
@@ -125,7 +128,7 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-masterdata" aria-expanded="false" aria-controls="ui-masterdata">
           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title"> Master Data </span>
+          <span class="menu-title"> Master Data Reports </span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-masterdata">
@@ -138,13 +141,14 @@
               <a class="nav-link" routerLink="storemaster">Store Master</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="distributionmaster">Distribution Centers </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" routerLink="suppliermaster">Supplier Master </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="storesupplymaster">Store – Supplier Master</a>
+              <a class="nav-link" routerLink="distributionmaster">Distribution Centre Master </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" routerLink="storesupplymaster">Store-Supplier Master</a>
             </li>
             
             
@@ -187,23 +191,23 @@
       <li class="nav-item">
         <a class="nav-link" data-bs-toggle="collapse" href="#ui-config" aria-expanded="false" aria-controls="ui-config">
           <i class="mdi mdi-crosshairs-gps menu-icon"></i>
-          <span class="menu-title"> Configurations </span>
+          <span class="menu-title"> System Configurations </span>
           <i class="menu-arrow"></i>
         </a>
         <div class="collapse" id="ui-config">
           <ul class="nav flex-column sub-menu">
             
             <li class="nav-item">
-              <a class="nav-link" routerLink="systemConfig">System Configurations </a>
+              <a class="nav-link" routerLink="systemConfig">Reorder Configuration </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="storeTransfer">Store Transfer</a>
+              <a class="nav-link" routerLink="storeTransfer">Store Transfer Parameters</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="scheduling">Scheduling </a>
+              <a class="nav-link" routerLink="forecastconfig">Forecasting Configuration </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" routerLink="forecastconfig">Forecasting Config </a>
+              <a class="nav-link" routerLink="scheduling">System Job Schedules </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink="monotonicconfig">Monotonic Constraints</a>

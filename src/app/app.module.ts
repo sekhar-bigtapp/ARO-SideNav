@@ -44,6 +44,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { OptimizeReorderComponent } from './modules/dashboard/optimize-reorder/optimize-reorder.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { MatInputModule } from '@angular/material/input';
     PhysicalStockCheckComponent,
     SideNavigationComponent,
     TopBarComponent,
+    OptimizeReorderComponent,
     // MasterDataComponent,
     // ProductMasterComponent,
     // StoreMasterComponent,

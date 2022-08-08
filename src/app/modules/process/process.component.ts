@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ProcessComponent implements OnInit {
   processForm!: FormGroup;
-  displayColumns: string[] = ['Store_Name', 'Product_Name', 'SKU_ID', 'Re_Order_Quantity', 'OverriderReorderQty',  'Supplier_Name', 'Actions']
+  displayColumns: string[] = ['Store_Name', 'Category_Name', 'Subcategory_Name', 'Product_Name', 'SKU_ID', 'Quantity_On_Hand', 'Forecasted_Volume', 'Transit_Stock', 'Re_Order_Quantity', 'OverriderReorderQty',  'Supplier_Name', 'Actions']
   processData!: MatTableDataSource<any>;
   overrideReorder!: any;
   pipe = new DatePipe('en-US');
@@ -23,6 +23,11 @@ export class ProcessComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
   minDate = new Date();
   storeNameList: any;
+
+  categoryNameList:any;
+  productNameList:any;
+  subCategoryNameList:any;
+  blanketOverrideForm! : FormGroup;
   constructor(private http: HttpClient, private storeService: StoreService,
     private formBuilder: FormBuilder) { }
 
@@ -34,9 +39,18 @@ export class ProcessComponent implements OnInit {
       SubCategories: [''],
       abcClass: [''],
       ProductName: [''],
-      SKU_CODE: ['']
+      SKU_CODE: [''],
+      CategoryName:[''],
+      SubcategoryName:['']
+    });    
+    this.blanketOverrideForm = this.formBuilder.group({
+      BlanketValue: [""],        
     });
+
     this.getStoresNamesList();
+    this.getProductNamesList();
+    this.getCategoryList();  
+
   }
 
   getStoresNamesList() {
@@ -45,6 +59,56 @@ export class ProcessComponent implements OnInit {
       this.storeNameList = response;
     });
 
+  }
+
+  getCategoryList (){
+    this.storeService.getCategoryNames().subscribe((response) => {
+      console.log(response);
+      this.categoryNameList = response;
+    })
+  }
+
+  getSubCategoryList (){
+    let obj = { "Category_Name" :this.processForm.value.CategoryName}
+    this.storeService.getSubCategoryNames(obj).subscribe((response) => {
+      
+      //console.log(response);
+      //alert ();
+      this.subCategoryNameList = response;
+    })
+    
+  }
+  getProductNamesList(){
+    this.storeService.getProductNames().subscribe((response) => {
+      console.log(response);
+      this.productNameList = response;
+    })
+    
+  }
+  
+  onBlanketSubmit(){
+    //const overrideValue = this.blanketOverrideForm.value.BlanketValue;
+    //alert();
+    let obj = {
+      "Date": this.pipe.transform(this.processForm.value.date, 'yyyy-MM-dd'),
+      "Store_Name": "",
+      "Category_Name": this.processForm.value.CategoryName,
+      "Subcategory_Name": this.processForm.value.SubcategoryName,
+      "Product_Name": this.processForm.value.ProductName,
+      "SKU_ID": "",
+      "Blanket_Override": this.blanketOverrideForm.value.BlanketValue   
+    }
+
+    this.storeService.getBlanketQty(obj).subscribe((response) => {
+      
+      this.processData = new MatTableDataSource(response[0]);
+      console.log(this.processData);
+      this.onSubmit();
+     // this.processData.paginator = this.paginator;
+      //this.processData.sort = this.sort;     
+
+    })
+    
   }
   onSubmit() {
     console.log(this.processForm.value);
@@ -66,7 +130,7 @@ export class ProcessComponent implements OnInit {
       this.processData.paginator = this.paginator;
       this.processData.sort = this.sort;
     })
-  }
+  } 
 
   onProdEdit(product: any) {
     product.editMode = true;

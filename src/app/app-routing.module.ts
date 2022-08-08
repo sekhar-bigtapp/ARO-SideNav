@@ -8,6 +8,7 @@ import { SchedulingConfigComponent } from './modules/configuration/scheduling-co
 import { StoreStoreTransferConfigComponent } from './modules/configuration/store-store-transfer-config/store-store-transfer-config.component';
 import { SystemconfigComponent } from './modules/configuration/systemconfig/systemconfig.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
+import { OptimizeReorderComponent } from './modules/dashboard/optimize-reorder/optimize-reorder.component';
 import { DistributionCenterComponent } from './modules/master-data/distribution-center/distribution-center.component';
 import { MasterDataComponent } from './modules/master-data/master-data.component';
 import { ProductMasterComponent } from './modules/master-data/product-master/product-master.component';
@@ -32,6 +33,7 @@ const routes: Routes = [
 
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'optimizeReorder', component: OptimizeReorderComponent },
   { path: 'process', component: ProcessComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'admin', component: AdminComponent },

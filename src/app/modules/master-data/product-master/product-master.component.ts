@@ -10,10 +10,11 @@ import { ProductMasterService } from './product-master.service';
   selector: 'app-product-master',
   templateUrl: './product-master.component.html',
   styleUrls: ['./product-master.component.css']
+  
 })
 export class ProductMasterComponent implements OnInit {
   productdata!: MatTableDataSource<any>;
-  displayColumns: string[] = ['Store_Key', 'Product_Name', 'SKU_ID', 'Category_Name', 'Subcategory_Name', 'packSize', 'Actions'];
+  displayColumns: string[] = ['Product_Key', 'Product_Name', 'SKU_ID', 'Category_Name', 'Subcategory_Name', 'packSize', 'Actions'];
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
