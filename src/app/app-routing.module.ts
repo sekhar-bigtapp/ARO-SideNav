@@ -17,6 +17,7 @@ import { StoreMasterComponent } from './modules/master-data/store-master/store-m
 import { StoreSupplierMasterComponent } from './modules/master-data/store-supplier-master/store-supplier-master.component';
 import { SupplierMasterComponent } from './modules/master-data/supplier-master/supplier-master.component';
 import { ProcessComponent } from './modules/process/process.component';
+import { SupplierProductCombinationComponent } from './modules/process/supplier-product-combination/supplier-product-combination.component';
 import { NewItemLaunchDateComponent } from './modules/transaction/new-item-launch-date/new-item-launch-date.component';
 import { PhaseOutItemsComponent } from './modules/transaction/phase-out-items/phase-out-items.component';
 import { PhysicalStockCheckComponent } from './modules/transaction/physical-stock-check/physical-stock-check.component';
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'scheduling', component: SchedulingConfigComponent, },
   { path: 'monotonicconfig', component: MonotonicConstraintsComponent },
   { path: 'forecastconfig', component: ForecastedConfigComponent },
+  { path: 'supplierSKUCombination', component:SupplierProductCombinationComponent},
 
   {
     path: 'configurations',

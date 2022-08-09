@@ -21,7 +21,7 @@ export class ProcessComponent implements OnInit {
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
-  minDate = new Date();
+  minDate = new Date("8-1-2022");
   storeNameList: any;
 
   categoryNameList:any;
@@ -134,7 +134,7 @@ export class ProcessComponent implements OnInit {
 
   onProdEdit(product: any) {
     product.editMode = true;
-    this.overrideReorder = product.Re_Order_Quantity;
+    this.overrideReorder = product.Override_Reorder;
   }
 
   onProdSave(product: any) {

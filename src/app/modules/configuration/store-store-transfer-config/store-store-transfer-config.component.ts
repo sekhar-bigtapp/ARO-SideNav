@@ -18,6 +18,9 @@ export class StoreStoreTransferConfigComponent implements OnInit {
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
+
+  isChecked = true;
+  
   constructor(private storeToStoreTransferService: StoreToStoreTransferConfigService,
     private formBuilder: FormBuilder) { }
 

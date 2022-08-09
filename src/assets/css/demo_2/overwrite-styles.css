@@ -129,7 +129,7 @@ td.mat-cell { padding: 5px 10px !important;}
 .landing-page-table-head  { background-color: #f3f6f9; padding: 10px;}
 .landing-page-table-head h6{ background-color: #f3f6f9; padding: 10px; margin-bottom: 0px;}
 .w-75px { width: 75px;}
-.filter-table-data .form-control {font-size: 12px; padding: 5px;}
+.filter-table-data .form-control {padding: 5px;}
 
 select.form-control{
   color: #474747 !important;

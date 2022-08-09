@@ -15,6 +15,7 @@ import { MonotonicConstraintsComponent } from './monotonic-constraints/monotonic
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { StoreToStoreTransferConfigService } from './store-store-transfer-config/store-store-transfer-config.service';
 import { forecastService } from './forecasted-config/forecast-service';
+import { DCStoreMappingComponent } from './dc-store-mapping/dc-store-mapping.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { forecastService } from './forecasted-config/forecast-service';
     StoreStoreTransferConfigComponent,
     SchedulingConfigComponent,
     MonotonicConstraintsComponent,
-    ForecastedConfigComponent
+    ForecastedConfigComponent,
+    DCStoreMappingComponent
   ],
   imports: [
     CommonModule,
