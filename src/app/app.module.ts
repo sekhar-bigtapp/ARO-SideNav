@@ -46,6 +46,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { OptimizeReorderComponent } from './modules/dashboard/optimize-reorder/optimize-reorder.component';
 import { SupplierProductCombinationComponent } from './modules/process/supplier-product-combination/supplier-product-combination.component';
+import { LoginComponent } from './modules/auth/login/login.component';
+
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { SupplierProductCombinationComponent } from './modules/process/supplier-
     TopBarComponent,
     OptimizeReorderComponent,
     SupplierProductCombinationComponent,
+    LoginComponent,
     // MasterDataComponent,
     // ProductMasterComponent,
     // StoreMasterComponent,
@@ -96,7 +99,9 @@ import { SupplierProductCombinationComponent } from './modules/process/supplier-
     MatDatepickerModule,
     MatNativeDateModule,
     MatFormFieldModule,
-    MatInputModule 
+    MatInputModule,
+    
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

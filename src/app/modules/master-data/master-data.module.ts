@@ -12,6 +12,9 @@ import { MasterDataComponent } from './master-data.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddProductMasterComponent } from './product-master/add-product-master/add-product-master.component';
+import { AddNewStoreComponent } from './store-master/add-new-store/add-new-store.component';
+import { AddNewSupplierComponent } from './supplier-master/add-new-supplier/add-new-supplier.component';
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StoreSupplierMasterComponent,
     StoreMasterComponent,
     ProductMasterComponent,
-    DistributionCenterComponent
+    DistributionCenterComponent,
+    AddProductMasterComponent,
+    AddNewStoreComponent,
+    AddNewSupplierComponent
   ],
   imports: [
     CommonModule,

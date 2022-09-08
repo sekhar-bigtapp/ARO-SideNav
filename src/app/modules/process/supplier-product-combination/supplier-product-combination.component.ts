@@ -80,10 +80,33 @@ export class SupplierProductCombinationComponent implements OnInit {
     
   }
 
+  onChange(el: any, event: any) {
+    console.log(el);
+    console.log(event.checked);
+    let obj: any;
+    if (event.checked) {
+      obj = {
+        "id": el.id,
+        //"Distance": el.Distance,
+        "Status": 1
+      }
+    } else {
+      obj = {
+        "id": el.id,
+        //"Distance": el.Distance,
+        "Status": 0
+      }
+    }
+    this.supplierService.supplierSKU(Object).subscribe((response => {
+      console.log(response);
+      this.onSupplierSubmit();
+    }))
+  }
+
   onSupplierSubmit (){
 
     let object = {
-      "Date": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
+      "Time_Key": this.pipe.transform(this.supplierForm.value.date, 'yyyy-MM-dd'),
       'Supplier_Name': this.supplierForm.value.SupplierName,
       'Store_Name' : this.supplierForm.value.StoreName,
       'Category_Name' : this.supplierForm.value.CategoryName ,

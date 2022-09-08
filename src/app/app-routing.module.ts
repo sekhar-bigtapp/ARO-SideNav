@@ -1,6 +1,8 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { AdminComponent } from './modules/admin/admin.component';
+import { LoginComponent } from './modules/auth/login/login.component';
 import { ConfigurationComponent } from './modules/configuration/configuration.component';
 import { ForecastedConfigComponent } from './modules/configuration/forecasted-config/forecasted-config.component';
 import { MonotonicConstraintsComponent } from './modules/configuration/monotonic-constraints/monotonic-constraints.component';
@@ -11,6 +13,7 @@ import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { OptimizeReorderComponent } from './modules/dashboard/optimize-reorder/optimize-reorder.component';
 import { DistributionCenterComponent } from './modules/master-data/distribution-center/distribution-center.component';
 import { MasterDataComponent } from './modules/master-data/master-data.component';
+import { AddProductMasterComponent } from './modules/master-data/product-master/add-product-master/add-product-master.component';
 import { ProductMasterComponent } from './modules/master-data/product-master/product-master.component';
 // import { ProductMasterComponent } from './modules/master-data/product-master/product-master.component';
 import { StoreMasterComponent } from './modules/master-data/store-master/store-master.component';
@@ -32,7 +35,9 @@ import { VendorManagedInventoryComponent } from './modules/transaction/vendor-ma
 
 const routes: Routes = [
 
-  { path: '', component: DashboardComponent },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  // { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'optimizeReorder', component: OptimizeReorderComponent },
   { path: 'process', component: ProcessComponent },
@@ -61,6 +66,7 @@ const routes: Routes = [
   { path: 'monotonicconfig', component: MonotonicConstraintsComponent },
   { path: 'forecastconfig', component: ForecastedConfigComponent },
   { path: 'supplierSKUCombination', component:SupplierProductCombinationComponent},
+  { path: 'addNewProduct', component:AddProductMasterComponent},
 
   {
     path: 'configurations',

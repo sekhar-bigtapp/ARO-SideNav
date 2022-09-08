@@ -12,8 +12,14 @@ import { StoreToStoreTransferConfigService } from './store-store-transfer-config
 })
 export class StoreStoreTransferConfigComponent implements OnInit {
   storeTransferForm!: FormGroup;
+  DcToStoreTransferForm!: FormGroup;
+
   displayColumns: string[] = ['Store_ID', 'Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
+  displayColuumsDCStore:string[] = ['Distribution_Key', 'Distribution_Name', 'Store_Name', 'Distance', 'Status', 'Actions'  ]
+  
   storeTransferData!: MatTableDataSource<any>;
+  DcToStoretransfterData!: MatTableDataSource<any>;
+
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -31,6 +37,12 @@ export class StoreStoreTransferConfigComponent implements OnInit {
       storeName: [""],
       distance: [''],
     });
+
+    this.DcToStoreTransferForm = this.formBuilder.group({
+      dcID:[""],
+      dcName:[""],
+      dcDistance : [""],
+    })
   }
 
   onStoreTransferSubmit() {
@@ -49,6 +61,19 @@ export class StoreStoreTransferConfigComponent implements OnInit {
     }))
   }
 
+  onDcToStoreSubmit() {
+    let object = {
+      "Distribution_Name":this.DcToStoreTransferForm.value.dcName,
+      "Distribution_Key":this.DcToStoreTransferForm.value.dcID,
+      "Distance":this.DcToStoreTransferForm.value.dcDistance,
+    }
+    this.storeToStoreTransferService.DcToStoreTransfer(object).subscribe((response => {
+      this.DcToStoretransfterData = new MatTableDataSource(response[0]);
+      this.DcToStoretransfterData.paginator = this.paginator;
+      this.DcToStoretransfterData.sort = this.sort;
+    }))
+
+  }
   OnStoreEdit(store: any) {
     console.log(store);
     store.Edit = true;
@@ -59,6 +84,29 @@ export class StoreStoreTransferConfigComponent implements OnInit {
   }
 
   onChange(el: any, event: any) {
+    console.log(el);
+    console.log(event.checked);
+    let obj: any;
+    if (event.checked) {
+      obj = {
+        "id": el.id,
+        "Distance": el.Distance,
+        "Status": 1
+      }
+    } else {
+      obj = {
+        "id": el.id,
+        "Distance": el.Distance,
+        "Status": 0
+      }
+    }
+    this.storeToStoreTransferService.DcToStoreTransfer(Object).subscribe((response => {
+      console.log(response);
+      this.onDcToStoreSubmit();
+    }))
+  }
+
+  onActive(el: any, event: any) {
     console.log(el);
     console.log(event.checked);
     let obj: any;

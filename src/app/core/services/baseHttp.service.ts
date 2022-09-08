@@ -10,9 +10,13 @@ export abstract class BaseHttp {
 
     constructor(private http: HttpClient) { }
 
+
     get<T>(url: string): Observable<T> {
+        let  bearer: any = localStorage.getItem('token');
         const header = new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            // 'token': bearer,
+            'Authorization': `Bearer ` + bearer,
         });
         return this.http.get<T>(environment.url + url, { headers: header }).pipe(
             map((response) => response),
@@ -21,8 +25,43 @@ export abstract class BaseHttp {
     }
 
     post<T>(url: string, body: any): Observable<T> {
+        let  bearer: any = localStorage.getItem('token');
+        
         const header = new HttpHeaders({
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            //'token': bearer
+            'Authorization': `Bearer ` + bearer,
+        });
+        return this.http
+            .post<T>(environment.url + url, JSON.stringify(body), { headers: header })
+            .pipe(
+                map((response) => response),
+                catchError(this.handleError)
+            );
+    }
+
+    
+
+    
+    login<T>(url: string, body: any): Observable<T> {
+        const header = new HttpHeaders({
+        'Content-Type': 'application/json',
+        });
+        return this.http
+        .post<T>(environment.url + url, JSON.stringify(body), { headers: header })
+        .pipe(
+            map((response) => response),
+            catchError(this.handleError)
+        );
+    }
+
+    logout<T>(url: string, body: any): Observable<T> {
+        let  bearer: any = localStorage.getItem('token');
+        
+        const header = new HttpHeaders({
+            'Content-Type': 'application/json',
+           // 'token': bearer
+            //'Authorization': `Bearer ` + bearer,
         });
         return this.http
             .post<T>(environment.url + url, JSON.stringify(body), { headers: header })

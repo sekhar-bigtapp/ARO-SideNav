@@ -14,7 +14,7 @@
                 <p class="m-0 pe-3"> Process Override</p>
               </a>
               <a class="ps-3 me-4" href="#">
-                <p class="m-0"> Supplier At Risk </p>
+                <p class="m-0"> Suppliers At Risk </p>
               </a>
             </div>
             <!-- <div class="float-right" style="flex-direction: row-reverse;">
@@ -219,8 +219,11 @@
                         </label>
                       </th>
                       <td mat-cell *matCellDef="let element">
-                        <mat-slide-toggle 
-                        [checked]="element.Store_Store_Transferd_Config==1?true:false"></mat-slide-toggle>
+                        <!-- <mat-slide-toggle 
+                        [checked]="element.Store_Store_Transferd_Config==1?true:false"></mat-slide-toggle> -->
+
+                        <mat-slide-toggle (change)="onChange(element,$event)"
+                          [checked]="element.Status==1?true:false"></mat-slide-toggle>
                       </td>
                     </ng-container>
   
