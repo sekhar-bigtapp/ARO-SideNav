@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ProductMasterService } from '../product-master.service';
 
@@ -10,6 +10,36 @@ import { ProductMasterService } from '../product-master.service';
 })
 export class AddProductMasterComponent implements OnInit {
   addproductMasterForm!: FormGroup;
+  validation_messages = {
+    SKU_ID: [
+      { type: 'required', message: 'Please Enter SKU ID' },
+    ],
+    Product_Name: [
+      { type: 'required', message: 'Please Enter Product_Name' },
+    ],
+    Category_Name: [
+      { type: 'required', message: 'Please Enter Category Name' },
+    ],
+    Subcategory_Name: [
+      { type: 'required', message: 'Please Enter Sub Category Name' },
+    ],
+    Package_Size: [
+      { type: 'required', message: 'Please Enter Pack Size' },
+    ],
+    Status: [
+      { type: 'required', message: 'Please Select Status' },
+    ],
+    NewProduct: [
+      { type: 'required', message: 'Please Select NewProduct' },
+    ],
+    Store_Key: [
+      { type: 'required', message: 'Please Select Store_Key' },
+    ],
+    Supplier_Key: [
+      { type: 'required', message: 'Please Select Supplier_Key' },
+    ],
+  }
+
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
@@ -19,21 +49,21 @@ export class AddProductMasterComponent implements OnInit {
   ngOnInit(): void {
     this.addproductMasterForm = this.formBuilder.group({
       Product_Key: [""],
-      Product_Name: [""],
-      Category_Name: [""],
-      Subcategory_Name: [""],
+      Product_Name: ["", Validators.required],
+      Category_Name: ["", Validators.required],
+      Subcategory_Name: ["", Validators.required],
       Product_Description: [""],
-      SKU_ID: [""],
+      SKU_ID: ["", Validators.required],
       Brand_Description: [""],
       Storage_Type: [""],
-      Package_Size: [""],
+      Package_Size: ["", Validators.required],
       Package_Details: [""],
       Dimensions: [""],
       weight: [""],
-      NewProduct: [""],
-      Status: [""],
-      Supplier_Key: [""],
-      Store_Key: [""],
+      NewProduct: ["", Validators.required],
+      Status: ["", Validators.required],
+      Supplier_Key: ["", Validators.required],
+      Store_Key: ["", Validators.required],
    
 
     });

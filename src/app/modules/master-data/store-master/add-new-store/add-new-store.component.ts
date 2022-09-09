@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { storeMasterService } from '../store-master.service';
@@ -11,6 +11,34 @@ import { storeMasterService } from '../store-master.service';
 })
 export class AddNewStoreComponent implements OnInit {
   addstoreMasterform!: FormGroup; 
+  validation_messages = {
+    Store_Key: [
+      { type: 'required', message: 'Please Enter Store Id' },
+    ],
+    Store_Name: [
+      { type: 'required', message: 'Please Enter Store Name' },
+    ],
+    Store_City: [
+      { type: 'required', message: 'Please Enter Store City' },
+    ],
+    Store_State: [
+      { type: 'required', message: 'Please Enter Store State' },
+    ],
+    Store_Country: [
+      { type: 'required', message: 'Please Enter Store Country' },
+    ],
+    Store_Lattitude: [
+      { type: 'required', message: 'Please Enter Store Lattitude' },
+    ],
+    Store_Longitude: [
+      { type: 'required', message: 'Please Enter Store Longitude' },
+    ],
+    Status: [
+      { type: 'required', message: 'Please Enter Status' },
+    ],
+    
+    
+  };
   
  
   constructor(
@@ -19,14 +47,14 @@ export class AddNewStoreComponent implements OnInit {
 
   ngOnInit(): void {
     this.addstoreMasterform = this.formBuilder.group({
-      Store_Key: [''],
-      Store_Name: [''],
-      Store_City: [''],
-      Store_State: [''],
-      Store_Country: [''],
-      Store_Lattitude: [''],
-      Store_Longitude: [''],
-      Status: [''],
+      Store_Key: ['',Validators.required],
+      Store_Name: ['',Validators.required],
+      Store_City: ['',Validators.required],
+      Store_State: ['',Validators.required],
+      Store_Country: ['',Validators.required],
+      Store_Lattitude: ['',Validators.required],
+      Store_Longitude: ['',Validators.required],
+      Status: ['',Validators.required],
     });
   }
  

@@ -14,9 +14,9 @@
               </a>
             </div>
             <div class="" style="display: inline-block;  float: right;">
-              <!-- <button type="button" (click)="backButtonClick()" class=" btn btn-sm btn-success btn-icon-text"
+              <button type="button" routerLink="/storemaster" class=" btn btn-sm btn-success btn-icon-text"
                 style="height:30px">
-                <i class="mdi mdi-arrow-left"></i> Back</button> -->
+                <i class="mdi mdi-arrow-left"></i> Back</button>
             </div>
           </div>
         </div>
@@ -27,57 +27,149 @@
               <div class="card-body">
   
                 <div class="mb-3">
-                  <h3 class="d-inline-block"> Store Master </h3>                  
+                  <h3 class="d-inline-block"> Store Master </h3> 
+                  <button type="submit" class="float-end btn btn-sm btn-primary mt-2 mt-sm-0 btn-icon-text">
+                    <i class="mdi mdi-plus-circle"></i> Submit</button>                 
                 </div>
                 <div class="clearfix"></div>
 
                 <div class="row">
-                    <div class="col-md-6 grid-margin stretch-card">
-                    <div class="card">
+                    <div class="col-md-6 grid-margin ">
+                    <div class="card mb-3">
                         <div class="card-header">
                           Store Information
                         </div>
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Store Id</label>
-                                <input type="text" class="form-control" id="Store_Key" formControlName="Store_Key" placeholder="Store Id">
+                              <mat-form-field>
+                                <input type="text" matInput class="form-control" id="Store_Key" formControlName="Store_Key" placeholder="Store Id">
+                                <mat-error *ngFor = "let validation of validation_messages.Store_Key">
+                                  <span *ngIf ="addstoreMasterform.get('Store_Key').hasError(validation.type)">
+                                    {{validation.message}}
+                                  </span>
+                                  
+                              </mat-error>
+                              </mat-form-field>
+                                <!-- <label for="exampleInputUsername1">Store Id</label> -->
+                                
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputUsername1">Store Name</label>
-                                <input type="text" class="form-control" id="Store_Name" formControlName="Store_Name" placeholder="Store Name">
+                              <mat-form-field>
+                                <input type="text" matInput class="form-control" id="Store_Name" formControlName="Store_Name" placeholder="Store Name">
+                                <mat-error *ngFor = "let validation of validation_messages.Store_Name">
+                                  <span *ngIf ="addstoreMasterform.get('Store_Name').hasError(validation.type)">
+                                    {{validation.message}}
+                                  </span>
+                                  
+                              </mat-error>
+
+                              </mat-form-field>
+                                <!-- <label for="exampleInputUsername1">Store Name</label> -->
+                                
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">City</label>
-                                <input type="text" class="form-control" id="Store_City" formControlName="Store_City" placeholder="Store City">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputUsername1">State</label>
-                                <input type="text" class="form-control" id="Store_State" formControlName="Store_State" placeholder="Store State">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleTextarea1">Country</label>
-                                <input type="text" class="form-control" id="Store_Country" formControlName="Store_Country" placeholder="Store Country">
-                              </div>
-                            
-                            
+
                         </div>
+                       
                       </div>
-                    </div>
-    
-                    <div class="col-md-6 grid-margin stretch-card">
-                      <div class="card mb-3">
+
+                      <div class="card">
                         <div class="card-header">
                           Store Status
                         </div>
                         <div class="card-body">
+
                           <div class="form-group">
-                            <label for="exampleFormControlSelect1">Store Status</label>
-                            <select class="form-control form-control-lg" formControlName="Status" id="Status">
-                              <option>0</option>
-                              <option>1</option>
-      
-                            </select>
+                            <mat-form-field>
+                              <label for="exampleFormControlSelect1">Store Status</label>
+
+                              <mat-select  id="Status"formControlName="Status">
+                                <mat-option value="1"> Active </mat-option>
+                                <mat-option value="0"> In Active </mat-option>
+                              </mat-select>
+                              <mat-error *ngFor="let validation of validation_messages.Status">
+                                <span *ngIf ="addstoreMasterform.get('Status').hasError(validation.type)">
+                                  {{validation.message}} 
+                                </span>
+        
+                              </mat-error>
+                            </mat-form-field>
+            
                           </div>
+                        </div>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-6 grid-margin">
+                      <div class="card">
+                        <div class="card-header">
+                         
+                          Store Address
+                        </div>
+                        <div class="card-body">
+                          <div class="form-group">
+                            <mat-form-field>
+                              <input type="text" matInput class="form-control" id="Store_City" formControlName="Store_City" placeholder="Store City">
+                              <mat-error *ngFor = "let validation of validation_messages.Store_City">
+                                <span *ngIf ="addstoreMasterform.get('Store_City').hasError(validation.type)">
+                                  {{validation.message}}
+                                 </span>
+                                
+                            </mat-error>
+                            </mat-form-field>
+                              <!-- <label for="exampleInputUsername1">City</label> -->
+                              
+                          </div>
+                          <div class="form-group">
+                            <mat-form-field>
+                              <input type="text" matInput class="form-control" id="Store_State" formControlName="Store_State" placeholder="Store State">
+                              <mat-error *ngFor = "let validation of validation_messages.Store_State">
+                                <span *ngIf ="addstoreMasterform.get('Store_State').hasError(validation.type)">
+                                  {{validation.message}}
+                                 </span>
+                                
+                            </mat-error>
+                            </mat-form-field>
+                              <!-- <label for="exampleInputUsername1">State</label> -->
+                              
+                          </div>
+                          <div class="form-group">
+                              <!-- <label for="exampleTextarea1">Country</label> -->
+                              <mat-form-field>
+                              <input type="text" matInput class="form-control" id="Store_Country" formControlName="Store_Country" placeholder="Store Country">
+                              <mat-error *ngFor = "let validation of validation_messages.Store_Country">
+                                <span *ngIf ="addstoreMasterform.get('Store_Country').hasError(validation.type)">
+                                  {{validation.message}}
+                                 </span>
+                                
+                            </mat-error>
+                            </mat-form-field>
+                            </div>
+                          
+                        <div class="form-group">
+                            <!-- <label for="exampleInputUsername1">Store Latitude</label> -->
+                            <mat-form-field>
+                            <input type="text" matInput class="form-control" id="Store_Lattitude" formControlName="Store_Lattitude" placeholder="Store Latitude">
+                            <mat-error *ngFor = "let validation of validation_messages.Store_Lattitude">
+                              <span *ngIf ="addstoreMasterform.get('Store_Lattitude').hasError(validation.type)">
+                                {{validation.message}}
+                               </span>
+                              
+                          </mat-error>
+                          </mat-form-field>
+                        </div>
+                        <div class="form-group">
+                          <!-- <label for="exampleInputUsername1">Store Longitude</label> -->
+                          <mat-form-field>
+                            <input type="text" matInput class="form-control" id="Store_Longitude" formControlName="Store_Longitude" placeholder="Store Longitude">
+                            <mat-error *ngFor = "let validation of validation_messages.Store_Longitude">
+                              <span *ngIf ="addstoreMasterform.get('Store_Longitude').hasError(validation.type)">
+                                {{validation.message}}
+                               </span>
+                              
+                          </mat-error>
+                          </mat-form-field>                        
+                      </div>
+                          
                         </div>
                       </div>  
     
@@ -88,34 +180,14 @@
                   </div>
     
     
-                  <div class="row">
-                    <div class="col-md-6 grid-margin stretch-card">
-                      <div class="card mb-3">
-                        <div class="card-header">
-                          Store Address
-                        </div>
-                        <div class="card-body">
-                          
-                        <div class="form-group">
-                            <label for="exampleInputUsername1">Store Latitude</label>
-                            <input type="text" class="form-control" id="Store_Lattitude" formControlName="Store_Lattitude" placeholder="Store Latitude">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputUsername1">Store Longitude</label>
-                          <input type="text" class="form-control" id="Store_Longitude" formControlName="Store_Longitude" placeholder="Store Longitude">
-                      </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
 
-              
+                  <button type="submit" class="float-end btn btn-sm btn-primary mt-2 mt-sm-0 btn-icon-text">
+                    <i class="mdi mdi-plus-circle"></i> Submit</button>
 
                 </div>
             </div>
-            <button type="submit" class="float-end btn btn-sm btn-primary mt-2 mt-sm-0 btn-icon-text">
-                <i class="mdi mdi-plus-circle"></i> Submit</button>
+            
         </form>
 
 
