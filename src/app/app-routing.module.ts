@@ -19,6 +19,7 @@ import { AddNewStoreComponent } from './modules/master-data/store-master/add-new
 // import { ProductMasterComponent } from './modules/master-data/product-master/product-master.component';
 import { StoreMasterComponent } from './modules/master-data/store-master/store-master.component';
 import { StoreSupplierMasterComponent } from './modules/master-data/store-supplier-master/store-supplier-master.component';
+import { AddNewSupplierComponent } from './modules/master-data/supplier-master/add-new-supplier/add-new-supplier.component';
 import { SupplierMasterComponent } from './modules/master-data/supplier-master/supplier-master.component';
 import { ProcessComponent } from './modules/process/process.component';
 import { SupplierProductCombinationComponent } from './modules/process/supplier-product-combination/supplier-product-combination.component';
@@ -68,7 +69,8 @@ const routes: Routes = [
   { path: 'forecastconfig', component: ForecastedConfigComponent },
   { path: 'supplierSKUCombination', component:SupplierProductCombinationComponent},
   { path: 'addNewProduct', component:AddProductMasterComponent},
-  {path: 'addNewStore', component:AddNewStoreComponent},
+  { path: 'addNewStore', component:AddNewStoreComponent},
+  { path: 'addNewSupplier', component:AddNewSupplierComponent},
 
   {
     path: 'configurations',

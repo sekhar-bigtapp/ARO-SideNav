@@ -15,6 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductMasterComponent } from './product-master/add-product-master/add-product-master.component';
 import { AddNewStoreComponent } from './store-master/add-new-store/add-new-store.component';
 import { AddNewSupplierComponent } from './supplier-master/add-new-supplier/add-new-supplier.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @NgModule({
@@ -37,6 +40,9 @@ import { AddNewSupplierComponent } from './supplier-master/add-new-supplier/add-
     MatSortModule,
     FormsModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ]
 })
 export class MasterDataModule { }

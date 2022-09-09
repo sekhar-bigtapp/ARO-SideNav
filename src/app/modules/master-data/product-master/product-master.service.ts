@@ -9,10 +9,14 @@ import { environment } from "src/environments/environment";
 })
 export class ProductMasterService extends BaseHttp {
     productMasterUrl: string = "product-master";
+    addNewProductUrl: string = "add-products";
 
     getproductMasterData(Obj: any) {
         return this.post<any>(this.productMasterUrl, Obj);
     }
 
+    addNewproductMasterData(Obj: any){
+        return this.post<any>(this.addNewProductUrl, Obj);
+    }
 
 }
