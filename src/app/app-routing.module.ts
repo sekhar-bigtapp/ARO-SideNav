@@ -11,6 +11,7 @@ import { StoreStoreTransferConfigComponent } from './modules/configuration/store
 import { SystemconfigComponent } from './modules/configuration/systemconfig/systemconfig.component';
 import { DashboardComponent } from './modules/dashboard/dashboard.component';
 import { OptimizeReorderComponent } from './modules/dashboard/optimize-reorder/optimize-reorder.component';
+import { AddNewDistributionCenterComponent } from './modules/master-data/distribution-center/add-new-distribution-center/add-new-distribution-center.component';
 import { DistributionCenterComponent } from './modules/master-data/distribution-center/distribution-center.component';
 import { MasterDataComponent } from './modules/master-data/master-data.component';
 import { AddProductMasterComponent } from './modules/master-data/product-master/add-product-master/add-product-master.component';
@@ -71,6 +72,7 @@ const routes: Routes = [
   { path: 'addNewProduct', component:AddProductMasterComponent},
   { path: 'addNewStore', component:AddNewStoreComponent},
   { path: 'addNewSupplier', component:AddNewSupplierComponent},
+  { path: 'addNewDistribution', component:AddNewDistributionCenterComponent},
 
   {
     path: 'configurations',

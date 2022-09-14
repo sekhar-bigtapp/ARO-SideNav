@@ -34,7 +34,7 @@ export class TopBarComponent implements OnInit {
 
 
   onSignOut() {
-    alert();
+    alert("Aru sure you want to signout");
     debugger;
     let obj= {
       "username": this.username,

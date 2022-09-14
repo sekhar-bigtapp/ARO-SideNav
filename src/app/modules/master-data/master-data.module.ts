@@ -18,6 +18,7 @@ import { AddNewSupplierComponent } from './supplier-master/add-new-supplier/add-
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { AddNewDistributionCenterComponent } from './distribution-center/add-new-distribution-center/add-new-distribution-center.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MatSelectModule } from '@angular/material/select';
     DistributionCenterComponent,
     AddProductMasterComponent,
     AddNewStoreComponent,
-    AddNewSupplierComponent
+    AddNewSupplierComponent,
+    AddNewDistributionCenterComponent
   ],
   imports: [
     CommonModule,

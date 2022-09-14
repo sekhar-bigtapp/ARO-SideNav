@@ -72,7 +72,7 @@ export class AddNewStoreComponent implements OnInit {
     this.storeMasterService.addnewStores(obj).subscribe((response) => {
       console.log(response);
       
-     
+      this.router.navigateByUrl('/storemaster');
     })
   }
 
