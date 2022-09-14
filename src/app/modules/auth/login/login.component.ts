@@ -78,14 +78,14 @@ export class LoginComponent implements OnInit {
         //let encryptedPassword = btoa(this.LoginForm.value.password);
         this.loginService.getLoginDetails(
           {
-            "username": this.LoginForm.value.userName,
-            "password": this.LoginForm.value.password,
+            "Username": this.LoginForm.value.userName,
+            "Password": this.LoginForm.value.password,
           }
         ).subscribe((response:any) => {
           console.log(response)
           this.router.navigateByUrl('dashboard')
           this.dataStorage.isUserLoggedIn = true
-          localStorage.setItem("token", response.token);
+          localStorage.setItem("token", response.Token_generated);
           localStorage.setItem("username", response.username)
           localStorage.setItem("userRole", response.role)
         }, (error) => {

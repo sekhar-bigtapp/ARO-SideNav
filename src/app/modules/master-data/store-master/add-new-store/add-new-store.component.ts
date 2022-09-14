@@ -54,24 +54,24 @@ export class AddNewStoreComponent implements OnInit {
       Store_Country: ['',Validators.required],
       Store_Lattitude: ['',Validators.required],
       Store_Longitude: ['',Validators.required],
-      Status: ['',Validators.required],
+     
     });
   }
  
   onAddStoreMasterSubmit() {
     let obj = {
-      "Store_Key":this.addstoreMasterform.value.Store_Key,
+      "Store_ID":this.addstoreMasterform.value.Store_Key,
       "Store_Name":this.addstoreMasterform.value.Store_Name,
       "Store_City":this.addstoreMasterform.value.Store_City,
-      "Store_State":this.addstoreMasterform.value.Store_State,
+      "Store_Region":this.addstoreMasterform.value.Store_State,
       "Store_Country":this.addstoreMasterform.value.Store_Country,
-      "Store_Lattitude":this.addstoreMasterform.value.Store_Lattitude,
+      "Store_Latitude":this.addstoreMasterform.value.Store_Lattitude,
       "Store_Longitude":this.addstoreMasterform.value.Store_Longitude,
-      "Status":this.addstoreMasterform.value.Status
+      // "Status":this.addstoreMasterform.value.Status
     }
     this.storeMasterService.addnewStores(obj).subscribe((response) => {
       console.log(response);
-      
+      this.router.navigateByUrl('/storemaster');
      
     })
   }
