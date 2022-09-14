@@ -105,9 +105,35 @@
                         <div class="form-group">
                         <mat-form-field>
                           <!-- <label for="exampleInputUsername1">Brand_Description</label> -->
-                          <input type="text" matInput class="form-control" id="Brand_Description" formControlName="Brand_Description" placeholder="Brand_Description">
+                          <input type="text" matInput class="form-control" id="Brand_Description" formControlName="Brand_Description" placeholder="Brand">
                         </mat-form-field>
                       </div>
+
+                      <div class="form-group">
+                        <mat-form-field>
+                          <!-- <label for="exampleInputUsername1">Brand_Description</label> -->
+                          <input type="text" matInput class="form-control" id="Color" formControlName="Color" placeholder="Color">
+                         
+                        </mat-form-field>
+                      </div>
+
+                      <mat-form-field>
+                        <label for="exampleFormControlSelect1">ABC Clarification</label>
+                      <!-- <select class="form-control form-control-lg" id="NewProduct" formControlName="NewProduct" placeholder="productStatus">
+                         <option value="1">Yes</option>
+                         <option value="0">No</option>
+                       </select> -->
+                       <mat-select  id="NewProduct" formControlName="ABCClarification">
+                         <mat-option value="A"> A </mat-option>
+                         <mat-option value="B"> B </mat-option>
+                         <mat-option value="C"> C </mat-option>
+                       </mat-select>
+                       <mat-error *ngFor="let validation of validation_messages.ABCClarification">
+                         <span *ngIf ="addproductMasterForm.get('ABCClarification').hasError(validation.type)">
+                           {{validation.message}} 
+                         </span>
+                         </mat-error>
+                       </mat-form-field>
                         
                     </div>
                   </div>
@@ -117,15 +143,10 @@
                       Product Status
                     </div>
                     <div class="card-body">
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <mat-form-field>
                        <label for="exampleFormControlSelect1">Product Status</label>
-                       <!--   <select class="form-control form-control-lg" id="Status" formControlName="Status" placeholder="productStatus">
-                          <option value="1">Active</option>
-                          <option value="0">In Active</option>
-  
-                        </select> -->
-                        <mat-select  id="Status"formControlName="Status">
+                          <mat-select  id="Status"formControlName="Status">
                           <mat-option value="1"> Active </mat-option>
                           <mat-option value="0"> In Active </mat-option>
                         </mat-select>
@@ -135,7 +156,7 @@
                           </span>
                           </mat-error>
                         </mat-form-field>
-                      </div>
+                      </div> -->
 
                       <div class="form-group">
                         <mat-form-field>
@@ -196,10 +217,9 @@
                       </mat-form-field>
                       </div>
                
-                  <div class="form-group">
-                      <!-- <label for="exampleInputUsername1">Package_Details</label> -->
+                  <!-- <div class="form-group">
                       <input type="text" matInput class="form-control" id="Package_Details" formControlName="Package_Details" placeholder="Package_Details">
-                  </div>
+                  </div> -->
             
                 <div class="form-group">
                   <mat-form-field>
@@ -213,7 +233,7 @@
 
                   </div>
 
-                  <div class="card mb-3">
+                  <!-- <div class="card mb-3">
                     <div class="card-header">
                       Supplier Details
                     </div>
@@ -221,7 +241,6 @@
                       
                     <div class="form-group">
                       <mat-form-field>
-                        <!-- <label for="exampleInputUsername1">Supplier Id</label> -->
                         <input type="text" matInput class="form-control" id="Supplier_Key" formControlName="Supplier_Key" placeholder="Supplier_Key">
                         <mat-error *ngFor="let validation of validation_messages.Supplier_Key">
                           <span *ngIf ="addproductMasterForm.get('Supplier_Key').hasError(validation.type)">
@@ -230,13 +249,8 @@
                           </mat-error>
                       </mat-form-field>
                       </div>
-                    <!-- <div class="form-group">
-                      <label for="exampleInputUsername1">Supplier Name</label>
-                      <input type="text" class="form-control" id="supplierName" formControlName="supplierName" placeholder="Username">
-                  </div> -->
-                  <div class="form-group">
+                    <div class="form-group">
                     <mat-form-field>
-                    <!-- <label for="exampleInputUsername1">Store Id</label> -->
                     <input type="text" matInput class="form-control" id="Store_Key" formControlName="Store_Key" placeholder="Store_Key">
                     <mat-error *ngFor="let validation of validation_messages.Store_Key">
                       <span *ngIf ="addproductMasterForm.get('Store_Key').hasError(validation.type)">
@@ -246,7 +260,7 @@
                   </mat-form-field>
                   </div>
                     </div>
-                  </div>
+                  </div> -->
 
                  </div>
               </div>

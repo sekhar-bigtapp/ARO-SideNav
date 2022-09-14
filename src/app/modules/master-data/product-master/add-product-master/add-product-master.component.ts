@@ -26,18 +26,13 @@ export class AddProductMasterComponent implements OnInit {
     Package_Size: [
       { type: 'required', message: 'Please Enter Pack Size' },
     ],
-    Status: [
-      { type: 'required', message: 'Please Select Status' },
-    ],
     NewProduct: [
       { type: 'required', message: 'Please Select NewProduct' },
     ],
-    Store_Key: [
-      { type: 'required', message: 'Please Select Store_Key' },
+    ABCClarification: [
+      {type: 'required', message: "Please Select ABCClarification"},
     ],
-    Supplier_Key: [
-      { type: 'required', message: 'Please Select Supplier_Key' },
-    ],
+    
   }
 
   constructor(
@@ -48,7 +43,6 @@ export class AddProductMasterComponent implements OnInit {
  
   ngOnInit(): void {
     this.addproductMasterForm = this.formBuilder.group({
-      Product_Key: [""],
       Product_Name: ["", Validators.required],
       Category_Name: ["", Validators.required],
       Subcategory_Name: ["", Validators.required],
@@ -57,15 +51,11 @@ export class AddProductMasterComponent implements OnInit {
       Brand_Description: [""],
       Storage_Type: [""],
       Package_Size: ["", Validators.required],
-      Package_Details: [""],
       Dimensions: [""],
       weight: [""],
       NewProduct: ["", Validators.required],
-      Status: ["", Validators.required],
-      Supplier_Key: ["", Validators.required],
-      Store_Key: ["", Validators.required],
-   
-
+      Color: [""],
+      ABCClarification: ["", Validators.required],
     });
   }
 
@@ -73,25 +63,20 @@ export class AddProductMasterComponent implements OnInit {
     alert();
     debugger;
     let Obj = {
-      "Product_Key": this.addproductMasterForm.value.Product_Key,
-      "Product_Name": this.addproductMasterForm.value.Product_Name,
-      "Category_Name": this.addproductMasterForm.value.Category_Name,
-      "Subcategory_Name": this.addproductMasterForm.value.Subcategory_Name,
-      "Product_Description":this.addproductMasterForm.value.Product_Description,
       "SKU_ID": this.addproductMasterForm.value.SKU_ID,
-      "Brand_Description":this.addproductMasterForm.value.Brand_Description,
-      "Storage_Type": this.addproductMasterForm.value.Storage_Type,
-      "Package_Size": this.addproductMasterForm.value.Package_Size,
-      "Package_Details": this.addproductMasterForm.value.Package_Details,
-      "Dimensions": this.addproductMasterForm.value.Dimensions,
-      "weight": this.addproductMasterForm.value.weight,
-      "NewProduct": this.addproductMasterForm.value.NewProduct,
-      "Status": this.addproductMasterForm.value.Status,
-      "Supplier_Key": this.addproductMasterForm.value.Supplier_Key,
-      "Store_Key": this.addproductMasterForm.value.Store_Key,
-
-
-
+      "Product_Name": this.addproductMasterForm.value.Product_Name,
+      "Category": this.addproductMasterForm.value.Category_Name,
+      "SubCategory": this.addproductMasterForm.value.Subcategory_Name,
+      "Product_Description":this.addproductMasterForm.value.Product_Description,      
+      "Brand":this.addproductMasterForm.value.Brand_Description,
+      "Storage_requirement": this.addproductMasterForm.value.Storage_Type,
+      "Pack_size": this.addproductMasterForm.value.Package_Size,
+      "Dimension": this.addproductMasterForm.value.Dimensions,
+      "Weight": this.addproductMasterForm.value.weight,
+      "New_product": this.addproductMasterForm.value.NewProduct,
+      "color": this.addproductMasterForm.value.Color,
+      "ABC_Classification": this.addproductMasterForm.value.ABCClarification,
+     
     }
     this.productMasterService.addNewproductMasterData(Obj).subscribe((response) => {
       console.log(response);
