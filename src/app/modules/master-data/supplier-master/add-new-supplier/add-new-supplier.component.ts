@@ -65,7 +65,7 @@ export class AddNewSupplierComponent implements OnInit {
       // Status: ['',Validators.required],
     });
   }onNewSupplierSubmit() {
-    debugger
+   
     let obj = {
       "Supplier_ID": this.addNewSupplierForm.value.Supplier_Key,
       "Name": this.addNewSupplierForm.value.Supplier_Name,

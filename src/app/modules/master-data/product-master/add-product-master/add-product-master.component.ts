@@ -60,8 +60,7 @@ export class AddProductMasterComponent implements OnInit {
   }
 
   onAddProductMasterSubmit() {
-    alert();
-    debugger;
+    alert();    
     let Obj = {
       "SKU_ID": this.addproductMasterForm.value.SKU_ID,
       "Product_Name": this.addproductMasterForm.value.Product_Name,

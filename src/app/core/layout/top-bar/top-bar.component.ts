@@ -37,7 +37,7 @@ export class TopBarComponent implements OnInit {
     //alert();
     // debugger;
     alert("Aru sure you want to signout");
-    debugger;
+    //debugger;
     let obj= {
       "Username": this.username,
       "Token_generated": localStorage.getItem("token")

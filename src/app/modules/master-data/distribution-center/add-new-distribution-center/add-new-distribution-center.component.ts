@@ -67,7 +67,7 @@ export class AddNewDistributionCenterComponent implements OnInit {
   }
 
   onAddDCMasterSubmit(){
-    debugger;
+   
     console.log(this.addDCmasterForm.value);
     let obj = {
       "DC_ID":this.addDCmasterForm.value.Distribution_Key,

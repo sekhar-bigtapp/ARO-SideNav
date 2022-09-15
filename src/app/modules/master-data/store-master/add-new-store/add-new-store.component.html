@@ -83,19 +83,18 @@
                       </div>
                       <div class="card-body">
                         <div class="form-group">
+                          <!-- <label for="exampleTextarea1">Country</label> -->
                           <mat-form-field>
-                            <input type="text" matInput class="form-control" id="Store_City" formControlName="Store_City" placeholder="Store City">
-                            <mat-error *ngFor = "let validation of validation_messages.Store_City">
-                              <span *ngIf ="addstoreMasterform.get('Store_City').hasError(validation.type)">
-                                {{validation.message}}
-                               </span>
-                              
-                          </mat-error>
-                          </mat-form-field>
-                            <!-- <label for="exampleInputUsername1">City</label> -->
+                          <input type="text" matInput class="form-control" id="Store_Country" formControlName="Store_Country" placeholder="Store Country">
+                          <mat-error *ngFor = "let validation of validation_messages.Store_Country">
+                            <span *ngIf ="addstoreMasterform.get('Store_Country').hasError(validation.type)">
+                              {{validation.message}}
+                             </span>
                             
+                        </mat-error>
+                        </mat-form-field>
                         </div>
-                        <div class="form-group">
+                      <div class="form-group">
                           <mat-form-field>
                             <input type="text" matInput class="form-control" id="Store_State" formControlName="Store_State" placeholder="Store Region">
                             <mat-error *ngFor = "let validation of validation_messages.Store_State">
@@ -109,17 +108,18 @@
                             
                         </div>
                         <div class="form-group">
-                            <!-- <label for="exampleTextarea1">Country</label> -->
-                            <mat-form-field>
-                            <input type="text" matInput class="form-control" id="Store_Country" formControlName="Store_Country" placeholder="Store Country">
-                            <mat-error *ngFor = "let validation of validation_messages.Store_Country">
-                              <span *ngIf ="addstoreMasterform.get('Store_Country').hasError(validation.type)">
+                          <mat-form-field>
+                            <input type="text" matInput class="form-control" id="Store_City" formControlName="Store_City" placeholder="Store City">
+                            <mat-error *ngFor = "let validation of validation_messages.Store_City">
+                              <span *ngIf ="addstoreMasterform.get('Store_City').hasError(validation.type)">
                                 {{validation.message}}
                                </span>
                               
                           </mat-error>
                           </mat-form-field>
-                          </div>
+                            <!-- <label for="exampleInputUsername1">City</label> -->
+                            
+                        </div>                       
                         
                       <div class="form-group">
                           <!-- <label for="exampleInputUsername1">Store Latitude</label> -->
