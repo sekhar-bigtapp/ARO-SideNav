@@ -115,7 +115,7 @@ td.mat-cell { padding: 5px 10px !important;}
 
 app-side-navigation { width: 260px; display: inline-block; vertical-align: top; height: 100vh; 
   background: #0e4ca1; }
-.main-panel {width: calc(100vw - 280px); display: inline-block; background: #f8f9fb;}
+.main-panel {width: calc(100vw - 280px); display: inline-block;}
 app-header {height: 60px;}
 
 .table-responsive tbody tr:nth-child(odd) {
@@ -161,7 +161,7 @@ select.form-control{
 body {
   margin: 0;
   font-family: 'Proxima-Nova-Font';
-  background: #0e4ca1;
+  /* background: #0e4ca1; */
 }
 .footer {
   background: #0e4ca1;
@@ -192,7 +192,7 @@ body {
     z-index: +999;
     background: #fff;
     margin-top: -60px;
-    height: 100vh;
+    /* height: 100vh; */
     
 }
 .scrollable-element {

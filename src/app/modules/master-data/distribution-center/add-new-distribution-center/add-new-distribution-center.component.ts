@@ -35,15 +35,15 @@ export class AddNewDistributionCenterComponent implements OnInit {
     Longitude: [
       { type: 'required', message: 'Please Enter Store Longitude' },
     ],
-    Status: [
-      { type: 'required', message: 'Please Enter Status' },
-    ],
-    Store_Key: [
-      { type: 'required', message: 'Please Enter Status' },
-    ],
-    Distance: [
-      { type: 'required', message: 'Please Enter Status' },
-    ],
+    // Status: [
+    //   { type: 'required', message: 'Please Enter Status' },
+    // ],
+    // Store_Key: [
+    //   { type: 'required', message: 'Please Enter Status' },
+    // ],
+    // Distance: [
+    //   { type: 'required', message: 'Please Enter Status' },
+    // ],
     
     
     
@@ -60,25 +60,26 @@ export class AddNewDistributionCenterComponent implements OnInit {
       City_Name: ['',Validators.required],
       Latitude: ['',Validators.required],
       Longitude: ['',Validators.required],
-      Status: ['',Validators.required],
-      Store_Key:['',Validators.required],
-      Distance:['',Validators.required]
+      // Status: ['',Validators.required],
+      // Store_Key:['',Validators.required],
+      // Distance:['',Validators.required]
     })
   }
 
   onAddDCMasterSubmit(){
     debugger;
+    console.log(this.addDCmasterForm.value);
     let obj = {
-      "Distribution_Key":this.addDCmasterForm.value.Distribution_Key,
-      "Distribution_Name": this.addDCmasterForm.value.Distribution_Name,
-      "State_Name": this.addDCmasterForm.value.State_Name,
-      "Country_Name": this.addDCmasterForm.value.Country_Name,
-      "City_Name": this.addDCmasterForm.value.City_Name,
-      "Latitude": this.addDCmasterForm.value.Latitude,
-      "Longitude": this.addDCmasterForm.value.Longitude,
-      "Status": this.addDCmasterForm.value.Status,
-      "Store_Key": this.addDCmasterForm.value.Store_Key,
-      "Distance" : this.addDCmasterForm.value.Distance,
+      "DC_ID":this.addDCmasterForm.value.Distribution_Key,
+      "Name": this.addDCmasterForm.value.Distribution_Name,
+      "DC_Region": this.addDCmasterForm.value.State_Name,
+      "DC_Country": this.addDCmasterForm.value.Country_Name,
+      "DC_City": this.addDCmasterForm.value.City_Name,
+      "DC_Longitude": this.addDCmasterForm.value.Latitude,
+      "DC_Latitude": this.addDCmasterForm.value.Longitude,
+      // "Status": this.addDCmasterForm.value.Status,
+      // "Store_Key": this.addDCmasterForm.value.Store_Key,
+      // "Distance" : this.addDCmasterForm.value.Distance,
       
     }
     this.distributionCenterService.addNewDistribution(obj).subscribe((response) => {

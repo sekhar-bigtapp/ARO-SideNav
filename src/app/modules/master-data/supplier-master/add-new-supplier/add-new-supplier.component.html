@@ -95,7 +95,7 @@
                     </div>
                   </div>
 
-                  <div class="card mb-3">
+                  <!-- <div class="card mb-3">
                     <div class="card-header">
                       Supplier Status
                     </div>
@@ -103,11 +103,7 @@
                       <div class="form-group">
                       <mat-form-field>
                         <label for="exampleFormControlSelect1">Supplier Status</label>
-                        <!-- <select class="form-control  form-control-lg"   id="Status"formControlName="Status">
-                          <option value="1">Active</option>
-                          <option value="0">In Active</option>
-  
-                        </select> -->
+                        
                         <mat-select  id="Status"formControlName="Status">
                           <mat-option value="1"> Active </mat-option>
                           <mat-option value="0"> In Active </mat-option>
@@ -121,7 +117,7 @@
                       </div>
                     </div>
                     
-                  </div>
+                  </div> -->
 
                 </div>
 
@@ -134,23 +130,11 @@
                         Supplider Address
                       </div>
                       <div class="card-body">
-                        <div class="form-group">
-                          <mat-form-field>
-                          <!-- <label for="exampleInputUsername1">State Name</label> -->
-                          <input type="text" matInput class="form-control" id="State_Name" formControlName="State_Name" placeholder="State_Name">
-                          
-                          <mat-error *ngFor="let validation of validation_messages.State_Name">
-                            <span *ngIf ="addNewSupplierForm.get('State_Name').hasError(validation.type)">
-                              {{validation.message}} 
-                            </span>
-                          </mat-error>
-                        </mat-form-field>
-                      </div>
-
+                        
                         <div class="form-group">
                           <mat-form-field>
                           <!-- <label for="exampleInputUsername1">Country Name</label> -->
-                          <input type="text" matInput class="form-control" id="Country_Name"formControlName="Country_Name" placeholder="Country_Name">
+                          <input type="text" matInput class="form-control" id="Country_Name"formControlName="Country_Name" placeholder="Supplier_Country">
                           <mat-error *ngFor="let validation of validation_messages.Country_Name">
                             <span *ngIf ="addNewSupplierForm.get('Country_Name').hasError(validation.type)">
                               {{validation.message}} 
@@ -161,8 +145,23 @@
 
                         <div class="form-group">
                           <mat-form-field>
+                          <!-- <label for="exampleInputUsername1">State Name</label> -->
+                          <input type="text" matInput class="form-control" id="Supplier_Region" formControlName="Supplier_Region" placeholder="Supplier_Region">
+                          
+                          <mat-error *ngFor="let validation of validation_messages.Supplier_Region">
+                            <span *ngIf ="addNewSupplierForm.get('Supplier_Region').hasError(validation.type)">
+                              {{validation.message}} 
+                            </span>
+                          </mat-error>
+                        </mat-form-field>
+                      </div>
+
+                       
+
+                        <div class="form-group">
+                          <mat-form-field>
                           <!-- <label for="exampleInputUsername1">City Name</label> -->
-                          <input type="text" matInput class="form-control" id="City_Name"formControlName="City_Name" placeholder="City_Name">
+                          <input type="text" matInput class="form-control" id="City_Name"formControlName="City_Name" placeholder="Supplier_City">
                           <mat-error *ngFor="let validation of validation_messages.City_Name">
                             <span *ngIf ="addNewSupplierForm.get('City_Name').hasError(validation.type)">
                               {{validation.message}} 
@@ -170,6 +169,32 @@
                           </mat-error>
                         </mat-form-field>
                       </div>
+
+                      <div class="form-group">
+                        <mat-form-field>
+                        <!-- <label for="exampleInputUsername1">City Name</label> -->
+                        <input type="text" matInput class="form-control" id="Supplier_Latitude"formControlName="Supplier_Latitude" placeholder="Supplier_Latitude">
+                        <mat-error *ngFor="let validation of validation_messages.Supplier_Latitude">
+                          <span *ngIf ="addNewSupplierForm.get('Supplier_Latitude').hasError(validation.type)">
+                            {{validation.message}} 
+                          </span>
+                        </mat-error>
+                      </mat-form-field>
+                    </div>
+
+
+
+                    <div class="form-group">
+                      <mat-form-field>
+                      <input type="text" matInput class="form-control" id="Supplier_Longitude"formControlName="Supplier_Longitude" placeholder="Supplier_Longitude">
+                      <mat-error *ngFor="let validation of validation_messages.Supplier_Longitude">
+                        <span *ngIf ="addNewSupplierForm.get('Supplier_Longitude').hasError(validation.type)">
+                          {{validation.message}} 
+                        </span>
+                      </mat-error>
+                    </mat-form-field>
+                  </div>
+
                       </div>
                       
                     </div>
