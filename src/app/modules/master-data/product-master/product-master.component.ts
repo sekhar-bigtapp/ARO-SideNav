@@ -14,7 +14,7 @@ import { ProductMasterService } from './product-master.service';
 })
 export class ProductMasterComponent implements OnInit {
   productdata!: MatTableDataSource<any>;
-  displayColumns: string[] = ['Product_Key', 'Product_Name', 'SKU_ID', 'Category_Name', 'Subcategory_Name', 'packSize', 'Actions'];
+  displayColumns: string[] = ['Product_name', 'SKU_ID', 'Category', 'SubCategory', 'Pack_size', 'Actions'];
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -30,7 +30,6 @@ export class ProductMasterComponent implements OnInit {
     this.productMasterForm = this.formBuilder.group({
       productName: [""],
       productCategories: [""],
-      vendor: [''],
       SKUCode: [''],
       productStatus: ['']
     });
@@ -41,11 +40,11 @@ export class ProductMasterComponent implements OnInit {
 
   onProductMasterSubmit() {
     let data = {
-      "Product_Name": this.productMasterForm.value.productName,
-      "Category_Name": this.productMasterForm.value.productCategories,
+      "Product_name": this.productMasterForm.value.productName,
+      "Category": this.productMasterForm.value.productCategories,
       "Status": this.productMasterForm.value.productStatus,
       "SKU_ID": this.productMasterForm.value.SKUCode,
-      "Supplier_Key": this.productMasterForm.value.vendor
+     
     }
     this.productMasterService.getproductMasterData(data).subscribe((response) => {
       console.log(response);

@@ -13,7 +13,7 @@ import { storeMasterService } from './store-master.service';
 })
 export class StoreMasterComponent implements OnInit {
   storeMasterform!: FormGroup;
-  displayColumns: string[] = ['Store_Key', 'Store_Name', 'Store_City', 'Store_State', 'Store_Country', 'Store_Lattitude', 'Store_Longitude', 'Actions']
+  displayColumns: string[] = ['Store_ID', 'Store_Name', 'Store_City', 'Store_Region', 'Store_Country', 'Store_Latitude', 'Store_Longitude', 'Actions']
   storeData!: MatTableDataSource<any>;
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
@@ -37,9 +37,9 @@ export class StoreMasterComponent implements OnInit {
   onStoreMasterSubmit() {
     let obj = {
       "Store_Country": this.storeMasterform.value.country,
-      "Store_State": this.storeMasterform.value.state,
+      "Store_Region": this.storeMasterform.value.state,
       "Store_City": this.storeMasterform.value.city,
-      "Store_Key": this.storeMasterform.value.storeId,
+      "Store_ID": this.storeMasterform.value.storeId,
       "Store_Name": this.storeMasterform.value.storeName
     }
     this.storeMasterService.getStores(obj).subscribe((response) => {
