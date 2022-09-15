@@ -115,7 +115,7 @@ td.mat-cell { padding: 5px 10px !important;}
 
 app-side-navigation { width: 260px; display: inline-block; vertical-align: top; height: 100vh; 
   background: #0e4ca1; }
-.main-panel {width: calc(100vw - 280px); display: inline-block; background: #f8f9fb;}
+.main-panel {width: calc(100vw - 280px); display: inline-block;}
 app-header {height: 60px;}
 
 .table-responsive tbody tr:nth-child(odd) {
@@ -161,11 +161,13 @@ select.form-control{
 body {
   margin: 0;
   font-family: 'Proxima-Nova-Font';
-  background: #0e4ca1;
+  /* background: #0e4ca1; */
 }
 .footer {
   background: #0e4ca1;
   color: #fff;;
+  width: calc(100vw - 280px);
+  float: right;
 }
 .panel {
   margin-bottom: 20px;
@@ -190,8 +192,40 @@ body {
     z-index: +999;
     background: #fff;
     margin-top: -60px;
-    height: 91vh;
+    /* height: 100vh; */
     
+}
+.scrollable-element {
+  position: fixed;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    overflow-y: auto;
+  scrollbar-color: white blue;
+}
+.main-panel { min-height: 100vh;}
+/* width */
+.scrollable-element::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.scrollable-element::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  background: #0e4ca1; 
+}
+ 
+/* Handle */
+.scrollable-element::-webkit-scrollbar-thumb {
+  background: #083f8b; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.scrollable-element::-webkit-scrollbar-thumb:hover {
+  background: #0e4444; 
 }
 
 

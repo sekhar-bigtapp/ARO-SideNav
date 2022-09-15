@@ -53,6 +53,49 @@
               <div class="tab-pane active" id="tabs-1" role="tabpanel">
 
                 <div class="left-tabs pt-5 pl-3 pb-5" role="tabpanel">
+
+                  <div class="row">
+
+
+                  <div class="col-md-3">
+                  <div class="form-group">
+                      <label for="exampleFormControlSelect2">Product Categories</label>
+                      <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                        <option> Select All</option>
+                        <option>Categories2</option>
+                        <option>Categories3</option>
+                        <option>Categories4</option>
+                        <option>Categories5</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="exampleFormControlSelect2">Sub Categories</label>
+                        <select class="form-control form-control-sm" id="exampleFormControlSelect1">
+                          <option>Select All</option>
+                          <option>Sub Categories2</option>
+                          <option>Sub Categories3</option>
+                          <option>Sub Categories4</option>
+                          <option>Sub Categories5</option>
+                        </select>
+                      </div>
+                    </div>
+
+           
+
+                  <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="exampleFormControlSelect1">Product Name</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Product Name" aria-label="Username" />
+                    </div>
+                  </div>
+
+
+
+                  </div>
+
                   <ul class="nav nav-tabs nav-tabs-left" role="tablist">
                     <li role="presentation" class="nav-item">
                       <a class="nav-link" href="#tab-1" aria-controls="tab-1" role="tab" data-toggle="tab"
@@ -76,15 +119,10 @@
                             value="option3" /> Monthly </label>
                       </a>
                     </li>
-                    <!-- <li role="presentation" class="nav-item">
-                      <a class="nav-link" href="#tab-4" aria-controls="tab-4" role="tab" data-toggle="tab">
-                        <label class="form-check-label">
-                          <input type="radio" class="form-check-input" name="optionsRadios2" id="optionsRadios3"
-                            value="option3" /> Pack Size </label>
-                      </a>
-                    </li> -->
 
-                  </ul>
+
+                  </ul> <br> <br>
+
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab-1" role="tabpanel">
                       <form [formGroup]="dailyForm" (ngSubmit)="onDailyFormSubmit()">
@@ -198,6 +236,67 @@
                   </div>
                 </div>
                 <!-- <div class="pb-5"> <button type="button" class="btn btn-primary offset-md-2"> Save </button> </div> -->
+
+                <div class="filter-table-data mt-3">
+                  <div class="mb-3">
+                    <h3 class="d-inline-block"> Reorder Frequency List </h3>
+                  </div>
+                  <div class="table-responsive ">
+                    <table class="table table-bordered table-striped text-sm">
+                      <thead>
+                        <tr>
+                          <th  width="100"> S.NO</th>
+                          <th> Category </th> 
+                          <th> Sub Category </th>
+                          <th> Product </th>
+                          <th>  Reorder Frequency  </th>
+                          <th> Actions</th>
+                       </tr>
+                        <tr>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          <th> <input type="text" class="form-control form-control-sm" > </th>
+                          
+                        </tr>
+                        </thead>
+                        <tbody>
+              
+                          <tr>
+                          <td> 1 </td>
+                          <td> Home Entertainment </td>
+                          <td> TV </td>
+                          <td> LG 52 inch LED</td>
+                          <td> Weekly</td>
+                          <td> <i class="fa fa-edit"></i>  &nbsp; &nbsp; &nbsp; <i class="fa fa-trash"> </i> </td>
+                        </tr>
+
+                        <tr>
+                          <td> 2</td>
+                          <td> Sports & Outdoor </td>
+                          <td> All </td>
+                          <td> All</td>
+                          <td> Daily </td>
+                          <td> <i class="fa fa-edit"></i>  &nbsp; &nbsp; &nbsp; <i class="fa fa-trash"> </i> </td>
+                        </tr>
+
+                        <tr>
+                          <td> 3 </td>
+                          <td> Home Entertainment </td>
+                          <td> TV </td>
+                          <td> All</td>
+                          <td> Monthly </td>
+                          <td> <i class="fa fa-edit"></i>  &nbsp; &nbsp; &nbsp; <i class="fa fa-trash"> </i> </td>
+                        </tr>
+              
+
+                        </tbody>
+                        </table>
+                  </div>
+                </div>
+
               </div>
 
               <div class="tab-pane" id="tabs-2" role="tabpanel">

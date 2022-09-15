@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
     }
 
     clkSignin() {
-      alert();
+      //alert();
       
       //this.errorFlag = false;
       if (this.LoginForm.valid) {
