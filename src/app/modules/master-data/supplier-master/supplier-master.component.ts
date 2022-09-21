@@ -13,7 +13,7 @@ import { supplerMasterService } from './supplier-master.service';
 })
 export class SupplierMasterComponent implements OnInit {
   supplierMasterform!: FormGroup;
-  displayColumns: string[] = ['Supplier_Key', 'Supplier_Name', 'City_Name', 'State_Name', 'Country_Name', 'Supplier_Email_ID', 'Supplier_Contact_Details', 'Status', 'Actions']
+  displayColumns: string[] = ['Supplier_ID', 'Name', 'Supplier_Country', 'Supplier_Region', 'Supplier_City', 'Email', 'Contact_Number', 'Actions']
   supplierMasterData!: MatTableDataSource<any>;
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
@@ -27,7 +27,6 @@ export class SupplierMasterComponent implements OnInit {
       country: [""],
       state: [""],
       city: [''],
-      storeName: [''],
       supplierID: [''],
       supplierName: ['']
     });
@@ -38,11 +37,11 @@ export class SupplierMasterComponent implements OnInit {
 
   onSupplierMasterSubmit() {
     let obj = {
-      "Country_Name": this.supplierMasterform.value.country,
-      "State_Name": this.supplierMasterform.value.state,
-      "City_Name": this.supplierMasterform.value.city,
-      "Supplier_Key": this.supplierMasterform.value.supplierID,
-      "Supplier_Name": this.supplierMasterform.value.supplierName
+      "Supplier_Country": this.supplierMasterform.value.country,
+      "Supplier_Region": this.supplierMasterform.value.state,
+      "Supplier_City": this.supplierMasterform.value.city,
+      "Supplier_ID": this.supplierMasterform.value.supplierID,
+      "Name": this.supplierMasterform.value.supplierName
     }
     this.supplierMasterService.getStores(obj).subscribe((response) => {
       console.log(response);
