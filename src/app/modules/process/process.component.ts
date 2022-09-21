@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
 })
 export class ProcessComponent implements OnInit {
   processForm!: FormGroup;
-  displayColumns: string[] = ['Store_Name', 'Category_Name', 'Subcategory_Name', 'Product_Name', 'SKU_ID', 'Quantity_On_Hand', 'Forecasted_Volume', 'Transit_Stock', 'Re_Order_Quantity', 'OverriderReorderQty',  'Supplier_Name', 'Actions']
+  displayColumns: string[] = ['Store_Name', 'Category', 'SubCategory', 'Product_name', 'SKU_ID', 'Physical_Stock_on_Hand', 'Forecasted_Volume', 'Transit_Stock', 'Re_Order_Quantity', 'OverriderReorderQty',  'Supplier_Name', 'Actions']
   processData!: MatTableDataSource<any>;
   overrideReorder!: any;
   pipe = new DatePipe('en-US');

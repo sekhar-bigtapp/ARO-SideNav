@@ -14,8 +14,8 @@ export class StoreStoreTransferConfigComponent implements OnInit {
   storeTransferForm!: FormGroup;
   DcToStoreTransferForm!: FormGroup;
 
-  displayColumns: string[] = ['Store_ID', 'Store_Name', 'Distance', 'Store_Store_Transferd_Config', 'Actions']
-  displayColuumsDCStore:string[] = ['Distribution_Key', 'Distribution_Name', 'Store_Name', 'Distance', 'Status', 'Actions'  ]
+  displayColumns: string[] = ['Destination_ID', 'Store_Name', 'Distance_to_Destination', 'Source_Type', 'Source_ID', 'Actions']
+  displayColuumsDCStore:string[] = ['Destination_ID', 'Name' , 'Store_Name', 'Distance_to_Destination', 'Source_Type', "Source_ID", 'Actions'  ]
   
   storeTransferData!: MatTableDataSource<any>;
   DcToStoretransfterData!: MatTableDataSource<any>;
@@ -49,7 +49,7 @@ export class StoreStoreTransferConfigComponent implements OnInit {
     let obj = {
       "Store_Name": this.storeTransferForm.value.storeName,
       "Store_ID": this.storeTransferForm.value.storeID,
-      "Distance": this.storeTransferForm.value.distance
+      "Distance_to_Destination": this.storeTransferForm.value.distance
     }
     this.storeToStoreTransferService.getStoreTransferData(obj).subscribe((response => {
       // for (let store of response) {
@@ -63,9 +63,9 @@ export class StoreStoreTransferConfigComponent implements OnInit {
 
   onDcToStoreSubmit() {
     let object = {
-      "Distribution_Name":this.DcToStoreTransferForm.value.dcName,
-      "Distribution_Key":this.DcToStoreTransferForm.value.dcID,
-      "Distance":this.DcToStoreTransferForm.value.dcDistance,
+      "Name":this.DcToStoreTransferForm.value.dcName,
+      "DC_ID":this.DcToStoreTransferForm.value.dcID,
+      "Distance_to_Destination":this.DcToStoreTransferForm.value.dcDistance,
     }
     this.storeToStoreTransferService.DcToStoreTransfer(object).subscribe((response => {
       this.DcToStoretransfterData = new MatTableDataSource(response[0]);

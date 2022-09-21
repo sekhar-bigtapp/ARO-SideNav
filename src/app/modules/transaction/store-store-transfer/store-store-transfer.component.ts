@@ -14,7 +14,7 @@ import { StoreTransferService } from './store-store-transfer.services';
 })
 export class StoreStoreTransferComponent implements OnInit {
   storeTransferfrom!: FormGroup;
-  displayColumns: string[] = ['Product_Name','Product_Key', 'SKU_ID', 'Store_Name', 'Quantity_On_Hand','Transfer_Qty','Transfer_Qty_Name','Actions']
+  displayColumns: string[] = ['Product_name', 'SKU_ID', 'Store_Name', 'Store_ID', 'Physical_Stock_on_Hand','Transfer_Qty','Transfer_to_Store','Actions']
   storeTransferMasterData!: MatTableDataSource<any>;
   pageSize = 10;
   storeNameList: any;
@@ -61,14 +61,14 @@ export class StoreStoreTransferComponent implements OnInit {
 
   onStoreSupplierMasterSubmit() {
     let obj = {
-      "Time_Key": this.pipe.transform(this.storeTransferfrom.value.Time_Key, 'yyyy-MM-dd'),
+      "Date": this.pipe.transform(this.storeTransferfrom.value.Time_Key, 'yyyy-MM-dd'),
       "Store_Name": this.storeTransferfrom.value.Store_Name,
-      "Store_Key": this.storeTransferfrom.value.Store_Key,
+      "Store_ID": this.storeTransferfrom.value.Store_Key,
       "SKU_ID": this.storeTransferfrom.value.SKU_ID,
-      "Product_Name":this.storeTransferfrom.value.Product_Name,
-      "Product_Key": this.storeTransferfrom.value.Product_Key,
-      "transferqty": "",
-      "Transfer_Qty_Name":this.storeTransferfrom.value.Store_Name,
+      "Product_name":this.storeTransferfrom.value.Product_Name,
+      // "Product_Key": this.storeTransferfrom.value.Product_Key,
+      // "transferqty": "",
+      // "Transfer_Qty_Name":this.storeTransferfrom.value.Store_Name,
     }
     this.storetransferservice.getStoreTransferName(obj).subscribe((response) => {
       console.log(response);  
