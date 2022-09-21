@@ -13,7 +13,7 @@ import { distributionCenterService } from './distribution-center.service';
 })
 export class DistributionCenterComponent implements OnInit {
   distributionCenterform!: FormGroup;
-  displayColumns: string[] = ['Distribution_Key', 'Distribution_Name', 'Country_Name', 'State_Name', 'City_Name', 'Latitude', 'Longitude', 'Status', 'Actions'];
+  displayColumns: string[] = ['DC_ID', 'Name', 'DC_Country', 'DC_Region', 'DC_City', 'DC_Longitude', 'DC_Latitude', 'Actions'];
   pageSize = 10;
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
@@ -39,11 +39,11 @@ export class DistributionCenterComponent implements OnInit {
   onDistributionCenterSubmit() {
     console.log(this.distributionCenterform.value);
     let obj = {
-      "Country_Name": this.distributionCenterform.value.country,
-      "State_Name": this.distributionCenterform.value.state,
-      "City_Name": this.distributionCenterform.value.city,
-      "Distribution_Key": this.distributionCenterform.value.distributionCenterID,
-      "Distribution_Name": this.distributionCenterform.value.distributionCentralName
+      "DC_Country": this.distributionCenterform.value.country,
+      "DC_Region": this.distributionCenterform.value.state,
+      "DC_City": this.distributionCenterform.value.city,
+      "DC_ID": this.distributionCenterform.value.distributionCenterID,
+      "Name": this.distributionCenterform.value.distributionCentralName
     }
     this.distributinoCenterService.getDistributionCenters(obj).subscribe((response) => {
       this.distributionCenterData = new MatTableDataSource(response[0]);

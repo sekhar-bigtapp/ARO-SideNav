@@ -57,13 +57,18 @@
                             <form class="login-form" [formGroup]="LoginForm" (ngSubmit)="clkSignin()">
 
                                 <!-- <h5> User Login </h5>  -->
-                                <!-- <div *ngIf="errorFlag"><mat-error>{{authorizationMessage}}</mat-error></div><br> -->
+                                <div *ngIf="errorFlag"><mat-error>{{authorizationMessage}}</mat-error></div><br>
                                 <div class="form-group inner-addon mb-1">
                                     <mat-form-field>
                                         <!-- <label for="name" class="login-icons" ><i class="fa fa-user"></i></label> -->
-                                        <input matInput type="text" autocomplete="off" name="userName" id="userName" placeholder=" Login ID"  [formControl]="LoginForm.controls['userName']">
+                                        <input matInput type="text" autocomplete="off" name="userName" id="userName" placeholder=" User Name"  [formControl]="LoginForm.controls['userName']">
                                         <span matPrefix> <i class="fa fa-user"></i> &nbsp; </span>
-                                       
+                                       <mat-error *ngFor="let validation of validation_messages.userName">
+                                            <span *ngIf="LoginForm.get('userName').hasError(validation.type)">
+                                                {{ validation.message}}
+                                            </span>
+                                        </mat-error>
+
                                     </mat-form-field>
         
                                 </div>
@@ -75,11 +80,11 @@
                                         <!-- <label for="name" class="login-icons"><i class="fa fa-key"></i></label> -->
                                         <input matInput type="password" name="password" id="password" placeholder="Password" [formControl]="LoginForm.controls['password']"/>
                                         <span matPrefix> <i class="fa fa-key"></i> &nbsp;  </span>
-                                        <!-- <mat-error *ngFor="let validation of validation_messages.password">
+                                        <mat-error *ngFor="let validation of validation_messages.password">
                                             <span *ngIf="LoginForm.get('password').hasError(validation.type)">
                                                 {{ validation.message}}
                                             </span>
-                                        </mat-error> -->
+                                        </mat-error>
                                     </mat-form-field>
                                 </div>
         

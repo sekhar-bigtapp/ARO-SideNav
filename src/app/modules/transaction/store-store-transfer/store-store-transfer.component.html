@@ -102,23 +102,23 @@
             <div class="table-responsive">
               <table mat-table [dataSource]="storeTransferMasterData" *ngIf="!!storeTransferMasterData" matSort
                 class="mat-elevation-z8 w-100">
-                <ng-container matColumnDef="Product_Name">
+                <ng-container matColumnDef="Product_name">
                   <th mat-header-cell *matHeaderCellDef style="width: 250px;" scope="col">
                     <label mat-sort-header>
                       Product Name
                     </label>
                   </th>
-                  <td mat-cell *matCellDef="let element"> {{element.Product_Name}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.Product_name}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="Product_Key">
+                <!-- <ng-container matColumnDef="Product_Key">
                   <th mat-header-cell *matHeaderCellDef scope="col">
                     <label mat-sort-header>
                       Product Key
                     </label>
                   </th>
                   <td mat-cell *matCellDef="let element"> {{element.Product_Key}} </td>
-                </ng-container>
+                </ng-container> -->
 
 
                 <ng-container matColumnDef="SKU_ID">
@@ -139,14 +139,23 @@
                   <td mat-cell *matCellDef="let element"> {{element.Store_Name}} </td>
                 </ng-container>
 
-                <ng-container matColumnDef="Quantity_On_Hand">
+                <ng-container matColumnDef="Store_ID">
+                  <th mat-header-cell *matHeaderCellDef scope="col">
+                    <label mat-sort-header>
+                      Store Name
+                    </label>
+                  </th>
+                  <td mat-cell *matCellDef="let element"> {{element.Store_ID}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="Physical_Stock_on_Hand">
                   <th mat-header-cell *matHeaderCellDef scope="col">
                     <label mat-sort-header>
                       Available Qty
                     </label>
                   </th>
                   <td mat-cell *matCellDef="let element">
-                    {{element.Quantity_On_Hand}}
+                    {{element.Physical_Stock_on_Hand}}
                   </td>
                 </ng-container>
 
@@ -163,7 +172,7 @@
                   </td>
                 </ng-container>
 
-                <ng-container matColumnDef="Transfer_Qty_Name">
+                <ng-container matColumnDef="Transfer_to_Store">
                   <th mat-header-cell *matHeaderCellDef scope="col">
                     <label mat-sort-header>
                       Transferd Strore Name

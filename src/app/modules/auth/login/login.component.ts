@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
   loginData: any;
 
   validation_messages = {
-    email_id: [
-      { type: 'required', message: 'Please enter email' },
-      { type: 'pattern', message: 'Please enter valid Email ID' },
+    userName: [
+      { type: 'required', message: 'Please enter valid user id' },
+      { type: 'pattern', message: 'Please enter valid User Id' },
       { type: 'maxlength', message: 'Password should be maximum 50 characters.' }
     ],
     password: [
@@ -84,16 +84,23 @@ export class LoginComponent implements OnInit {
         ).subscribe((response:any) => {
           console.log(response)
           this.router.navigateByUrl('dashboard')
+          this.authorizationMessage = MyAppHttp.ToasterMessage.activeOrNot;
           this.dataStorage.isUserLoggedIn = true
           localStorage.setItem("token", response.Token_generated);
           localStorage.setItem("username", response.username)
           localStorage.setItem("userRole", response.role)
         }, (error) => {
-          //this.errorFlag = true;
-          //this.authorizationMessage = error.error.response.message;
+          console.log(error.error.message)
+          this.errorFlag = true;
+          this.authorizationMessage = error.error.message;
           // let errorMessage = error.error.response.message;
           // this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', errorMessage);
         });
+      }
+      else {
+        this.errorFlag = true;
+        // this.authorizationMessage = response.message;
+        //this.sendReceiveService.showToast(MyAppHttp.ToastType.ERROR, 'Error', response.message);
       }
     }
   }

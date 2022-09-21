@@ -33,6 +33,7 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatCheckboxModule,
     MatCardModule,
+    
 
   ],
   providers: [LoginService]
